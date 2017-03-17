@@ -1,0 +1,5 @@
+Nome: ADM Michy
+PosX: 1138, PosY: 1077, PosZ: 7
+Data: 12/12/16 23:53:11
+
+Bug: Hola me encontré un bug me podrian ayudar?

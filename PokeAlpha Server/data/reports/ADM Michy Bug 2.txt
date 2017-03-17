@@ -1,0 +1,5 @@
+Nome: ADM Michy
+PosX: 1139, PosY: 1077, PosZ: 7
+Data: 12/12/16 23:53:02
+
+Bug: encontrei um buga
