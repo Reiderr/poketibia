@@ -1,5 +1,5 @@
 local poke = {"Espeon", "Shiny Xatu", "Jynx", "Shiny Jynx", "Xatu", "Natu", "Exeggutor", "Slowking", "Slowbro", "Shiny Mr. Mime", 'Mew', 'Mewtwo', 'Abra', 'Kadabra', 'Alakazam', 'Drowzee', 'Hypno', 'Mr. Mime', 'Porygon', 'Shiny Abra', 'Shiny Alakazam', 
-'Shiny Hypno', 'Porygon2'}  --alterado v1.9
+'Shiny Hypno', 'Porygon2', 'Wobbuffet'}  --alterado v1.9
 
 local etele = 9499
 local cdtele = 600
