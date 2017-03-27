@@ -253,75 +253,42 @@ if isPlayer(cid) or isPlayer(attacker) then return false end -- seguranca do pla
 		value = value * 1.3
 	elseif isInArray(typeTable[pokeRaceAttacker].week, pokeRaceDefender) or isInArray(typeTable[pokeRaceAttacker].week, pokeRaceDefender) then -- elemento atacante ser mais forte que os elementos de defesa
 		value = value
-   elseif isInArray(typeTable[pokeRaceAttacker].non, pokeRaceDefender) or isInArray(typeTable[pokeRaceAttacker].non, pokeRaceDefender) then -- elemento atacante ser mais forte que os elementos de defesa
-        value = 0
-    end
+	elseif isInArray(typeTable[pokeRaceAttacker].non, pokeRaceDefender) or isInArray(typeTable[pokeRaceAttacker].non, pokeRaceDefender) then -- elemento atacante ser mais forte que os elementos de defesa
+		value = 0
+	end
 	if getCreatureName(cid) == "Venusaur" and value ~= 0 and isMega(cid) and isInArray({"ice", "fire"}, pokeRaceAttacker)then -- Passiva thick fat
 	   value = value / 2
 	end
 	return value
 end
 
-if pokeRaceDefender == "ghost" then         --Melee ser anulado vs ghost type.
-	value = 0
-end
-
 function getEffectvineSpell(attacker, spellNameFromAttacker, value, cid) -- printar os elementos
-    if(spellNameFromAttacker ~= -1) then -- checagem de efetividades
-        local name = getCreatureName(attacker) -- reflect system
-        if isMega(attacker) then
-         name = getPlayerStorageValue(attacker, storages.isMega)
-        end
-        
-        local spellRace, pokeElement1, pokeElement2 = getMoveType(name, spellNameFromAttacker), getPokemonType(cid).type1, getPokemonType(cid).type2
-        
-        if not typeTable[spellRace] then 
-            local remover = removeSpellInXML(doCorrectString(name), spellNameFromAttacker)
-            if remover then print("Magia: " .. spellNameFromAttacker .. " removida do XML: " .. doCorrectString(name) .. ".xml") end
-            return 0
-        end
-        
-        local multiplier = 1
-        if isInArray(typeTable[spellRace].super, pokeElement1) then
-            multiplier = multiplier + 0.5
-        end
-        if pokeElement2 and isInArray(typeTable[spellRace].super, pokeElement2) then
-            multiplier = multiplier + 0.5
-        end
-        if isInArray(typeTable[spellRace].weak, pokeElement1) then
-            multiplier = multiplier - 0.25
-        end
-        if pokeElement2 and isInArray(typeTable[spellRace].weak, pokeElement2) then
-            multiplier = multiplier - 0.25
-        end
---Miracle eye
-if spellRace == "psychic" and (pokeElement1 == "dark" or pokeElement2 and pokeElement2 == "dark") and getPlayerStorageValue(attacker, 999457) > -1 then
-	multiplier = 0.75
-	setPlayerStorageValue(attacker, 999457, -1) 
-else
-	if isInArray(typeTable[spellRace].non, pokeElement1) then
- 		 multiplier = multiplier * 0
-  	end
-
-	if pokeElement2 and isInArray(typeTable[spellRace].non, pokeElement2) then
-		multiplier = multiplier * 0
+if(spellNameFromAttacker ~= -1) then -- checagem de efetividades
+local name = getCreatureName(attacker) -- reflect system
+	  if isMega(attacker) then
+	     name = getPlayerStorageValue(attacker, storages.isMega)
+      end
+local spellRace, pokeElement1, pokeElement2 = getMoveType(name, spellNameFromAttacker), getPokemonType(cid).type1, getPokemonType(cid).type2
+	
+	if not typeTable[spellRace] then 
+		local remover = removeSpellInXML(doCorrectString(name), spellNameFromAttacker)
+		if remover then print("Magia: " .. spellNameFromAttacker .. " removida do XML: " .. doCorrectString(name) .. ".xml") end
+		return 0
 	end
+	if isInArray(typeTable[spellRace].super, pokeElement1) or isInArray(typeTable[spellRace].super, pokeElement2) then -- elemento atacante ser mais forte que os elementos de defesa
+		value = value * 1.3
+	elseif isInArray(typeTable[spellRace].week, pokeElement1) or isInArray(typeTable[spellRace].week, pokeElement2) then -- elemento atacante ser mais forte que os elementos de defesa
+		value = value
+	elseif isInArray(typeTable[spellRace].non, pokeElement1) or isInArray(typeTable[spellRace].non, pokeElement2) then -- elemento atacante ser mais forte que os elementos de defesa
+		value = 0
+	end
+	
+	if getCreatureName(cid) == "Venusaur" and value ~= 0 and isMega(cid) and isInArray({"ice", "fire"}, spellRace)then -- Passiva thick fat
+	   value = value / 2
+	end
+	
 end
-        if multiplier == 1.5 and poketype2 == "no type" then
-            multiplier = 2                                         
-        elseif multiplier == 0.75 and poketype2 == "no type" then    
-            multiplier = 0.5    
-        elseif multiplier == 1.25 then    
-            multiplier = 1   
-        end
-        
-        value = value * multiplier
-    
-        if getCreatureName(cid) == "Venusaur" and value ~= 0 and isMega(cid) and isInArray({"ice", "fire"}, spellRace)then -- Passiva thick fat
-           value = value / 2
-        end
-    end
-    return value
+	return value
 end
 
 function getMoveType(name, moveName)

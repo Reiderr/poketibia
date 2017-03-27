@@ -2,6 +2,7 @@ local skills = specialabilities                                    --alterado v1
 
 function doAddPokemonInDexList(cid, poke)
 if getPlayerInfoAboutPokemon(cid, poke).dex then return true end
+	poke = doCorrectString(poke)
 	local a = newpokedex[poke]                                              
 	local b = getPlayerStorageValue(cid, a.storage)
 	setPlayerStorageValue(cid, a.storage, b.." dex,")
@@ -66,7 +67,7 @@ function getPokemonEvolutionDescription(name, next)
 return table.concat(stt)
 end
 
-local function getMoveDexDescr(cid, name, number)
+local function getMoveDexDescr(name, number)
 	local x = movestable[name]
 	if not x then return "" end
 	
@@ -74,11 +75,7 @@ local function getMoveDexDescr(cid, name, number)
 	local tables = {x.move1, x.move2, x.move3, x.move4, x.move5, x.move6, x.move7, x.move8, x.move9, x.move10, x.move11, x.move12}
 	local y = tables[number]
 	if not y then return "" end
-	
-if getTableMove(cid, y.name) == "" then
-   print(""..y.name.." faltando")
-   return "unknown error"
-end
+
 local txt = ""..z..""..y.name.." - m"..number.." - level "..y.level.." - "..(y.t) 
 return txt
 end      
@@ -113,14 +110,11 @@ local passivas = {
 }
 
 
-function doShowPokedexRegistration(cid, pokemon, ball)
-local item2 = pokemon
-local virtual = false
-   if type(pokemon) == "string" then
-      virtual = true
-   end
+function doShowPokedexRegistration(cid, pokemon, ball, item2)
+
+
 local myball = ball
-local name = virtual and pokemon or getCreatureName(item2.uid)
+local name = pokemon 
 
 local v = fotos[name]
 local stt = {}
@@ -136,7 +130,7 @@ end
 if virtual then
    table.insert(stt, "\nRequired level: "..pokes[name].level.."\n")
 else
-   table.insert(stt, "\nRequired level: ".. getPokemonLevel(item2.uid, true) .."\n")  --alterado v1.9
+   table.insert(stt, "\nRequired level: ".. getPokemonLevelD(name) .."\n")  --alterado v1.9
 end
 
 table.insert(stt, "\n"..getPokemonEvolutionDescription(name).."\n")
@@ -144,18 +138,10 @@ table.insert(stt, "\n"..getPokemonEvolutionDescription(name).."\n")
 table.insert(stt, "\nMoves:")
 
 if name == "Ditto" then
-   if virtual then
-      table.insert(stt, "\nIt doesn't use any moves until transformed.")
-   elseif getPlayerStorageValue(item2.uid, 1010) == "Ditto" or getPlayerStorageValue(item2.uid, 1010) == -1 then
-      table.insert(stt, "\nIt doesn't use any moves until transformed.")
-   else
-      for a = 1, 15 do
-         table.insert(stt, getMoveDexDescr(item2.uid, getPlayerStorageValue(item2.uid, 1010), a))
-      end
-   end
+   table.insert(stt, "\nIt doesn't use any moves until transformed.")
 else
    for a = 1, 15 do
-      table.insert(stt, getMoveDexDescr(item2.uid, name, a))
+      table.insert(stt, getMoveDexDescr(name, a))
    end
 end
 

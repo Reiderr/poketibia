@@ -2,44 +2,44 @@
 gameVersion = "2.5"
 playerSpeed = 250
 farWayPos = {x = 102, y = 66, z = 4} -- usada pra sistema de order, para o poke entrar de baixo do player
-tempoPraVoltarAoNormal = 40 -- Voltar a rock, bush e outros do order.
+tempoPraVoltarAoNormal = 8 -- Voltar a rock, bush e outros do order.
 base_Fome_e_Felicidade = 60 -- o Maximo é 150. Quando for capturado ou criado pelo god. 60 = normal
 
 ---Efeitos
-EFFECT_DIG = 44
-EFFECT_CUT = 142
+EFFECT_DIG = 88
+EFFECT_CUT = 93
 --- Msgs
-MSG_NAO_E_POSSIVEL = "Sorry, not possible."
+MSG_NAO_E_POSSIVEL = "Desculpe, mas isso não é possível."
 
 pokesGhosts = {"Gengar", "Haunter", "Gastly"}
 
 ---------------- megaTables
 megasConf = { -- charizard x mais ataque menos speed/def, charizard y mais speed/def, menos ataque
-        ["Mega Alakazam"] = {out = 1853, offense = 8.3, defense = 30, specialattack = 30, life = 8000, agility = 220, wildVity = 10, wildChance = 0.01, itemToDrop = 15131},
-        ["Mega Charizard X"] = { out = {1879, 1880, 1881}, offense = 6, defense = 25, specialattack = 7, life = 9000, agility = 260, wildVity = 10, wildChance = 0.01, itemToDrop = 15134, type = fire},
-        ["Mega Charizard Y"] = { out = {1876, 1877, 1878}, offense = 5.6, defense = 35, specialattack = 6.5, life = 9000, agility = 280, wildVity = 10, wildChance = 0.01, itemToDrop = 15135, type = fire},
-        ["Mega Blastoise"] = {out = 1850, offense = 10.3, defense = 45, specialattack = 30, life = 9000, agility = 260, wildVity = 10, wildChance = 0.01, itemToDrop = 15133},
-        ["Mega Gengar"] = {out = 1851, offense = 15.3, defense = 35, specialattack = 38, life = 9000, agility = 260, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-       
-        ["Mega Ampharos"] = {out = {2093, 2094, 2095}, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15794},    
-        ["Mega Venusaur"] = {out = 1863, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15793},    
-        ["Mega Tyranitar"] = {out = 1854, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15781},    
-        ["Mega Kangaskhan"] = {out = 1872, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15783},    
-        ["Mega Scizor"] = {out = 1892, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15784},    
-       
-        ["Mega Aerodactyl"] = {out = 2061, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15786},    
-        ["Mega Pidgeot"] = {out = 2081, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15791},    
-        ["Mega Mawile"] = {out = 1859, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Gardevoir"] = {out = 2089, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Absol"] = {out = 2068, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Lucario"] = {out = 2069, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Sceptile"] = {out = 2071, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Swampert"] = {out = 2075, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Aggron"] = {out = 1864, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-        ["Mega Blaziken"] = {out = {2090, 2091, 2092}, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.01, itemToDrop = 15136},    
-       
-           
-    }
+		["Mega Alakazam"] = {out = 13, offense = 8.3, defense = 30, specialattack = 30, life = 8000, agility = 220, wildVity = 10, wildChance = 0.1, itemToDrop = 15131},
+		["Mega Charizard X"] = { out = {1879, 1880, 1881}, offense = 10.3, defense = 25, specialattack = 35, life = 9000, agility = 260, wildVity = 10, wildChance = 0.1, itemToDrop = 15134},
+		["Mega Charizard Y"] = { out = {1876, 1877, 1878}, offense = 9.3, defense = 35, specialattack = 30, life = 9000, agility = 280, wildVity = 10, wildChance = 0.1, itemToDrop = 15135},
+		["Mega Blastoise"] = {out = 14, offense = 10.3, defense = 45, specialattack = 30, life = 9000, agility = 260, wildVity = 10, wildChance = 0.1, itemToDrop = 15133},
+	    ["Mega Gengar"] = {out = 1851, offense = 15.3, defense = 35, specialattack = 38, life = 9000, agility = 260, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	   
+		["Mega Ampharos"] = {out = {2093, 2094, 2095}, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15794},	
+	    ["Mega Venusaur"] = {out = 1863, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15793},	
+	    ["Mega Tyranitar"] = {out = 1854, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15781},	 
+		["Mega Kangaskhan"] = {out = 1872, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15783},	
+	    ["Mega Scizor"] = {out = 1892, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15784},	
+	    
+		["Mega Aerodactyl"] = {out = 2061, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15786},	
+	    ["Mega Pidgeot"] = {out = 2081, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15791},	
+	    ["Mega Mawile"] = {out = 1859, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Gardevoir"] = {out = 2089, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Absol"] = {out = 2068, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Lucario"] = {out = 2069, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Sceptile"] = {out = 2071, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Swampert"] = {out = 2075, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Aggron"] = {out = 1864, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.1, itemToDrop = 15136},	
+	    ["Mega Blaziken"] = {out = {2090, 2091, 2092}, offense = 15.3, defense = 40, specialattack = 25, life = 9000, agility = 270, wildVity = 10, wildChance = 0.05, itemToDrop = 15136},	
+	    
+	   	
+	}
 ---------------- megaTables
 
 ---------------- heldItems efeitos
@@ -155,58 +155,41 @@ heldVitality = {
 
 ---------------- configs gerais
 orderTalks = {
-	["ride"] = {talks = {", let's ride."}, storage = 9800},
-	["fly"] = {talks = {", let's fly."}, storage = 9801},
-	["levitate"] = {talks = {", let's levitate."}, storage = 9801},
-	["surf"] = {talks = {", let's surf."}, storage = 63215},
-	["dig"] = {talks = {", dig it."}, storage = 9803},
-	["cut"] = {talks = {", cut it."}, storage = 9804},
-	["rock"] = {talks = {", use rock smash!"}, storage = 9805},
-	["headbutt"] = {talks = {", headbutt."}, storage = 9806},
-	["move"] = {talks = {", move!"}, storage = 0},
-	["blink"] = {talks = {", blink"}, storage = 0},
-	["gopoke"] = {talks = {", i need your Help!", ", I choose you!.", ", its the battle time!" }, storage = 0},
-	["backpoke"] = {talks = {", nice work.", ", thanks.", ", that's enough come back." }, storage = 0},
-	["downability"] = {talks = {", thanks.", ", let me go down." }, storage = 0},
+	["ride"] = {talks = {", deixe-me montá-lo.", ", vamos correr!"}, storage = 9800},
+	["fly"] = {talks = {", deixe-me montá-lo.", ", vamos voar!"}, storage = 9801},
+	["levitate"] = {talks = {", deixe-me montá-lo.", ", levitar!"}, storage = 9801},
+	["surf"] = {talks = {", deixe-me montá-lo.", ", vamos surfar!"}, storage = 63215},
+	["dig"] = {talks = {", cave este buraco.", ", use o cavar!"}, storage = 9803},
+	["cut"] = {talks = {", corte esta árvore.", ", use o cortar!"}, storage = 9804},
+	["rock"] = {talks = {", quebre esta rocha.", ", use o quebra rocha!"}, storage = 9805},
+	["headbutt"] = {talks = {", balance aquela árvore.", ", bata naquela árvore."}, storage = 9806},
+	["move"] = {talks = {", mova-se!"}, storage = 0},
+	["blink"] = {talks = {", teletransporte.", ", use o teletransporte." }, storage = 0},
+	["gopoke"] = {talks = {", eu preciso de sua ajuda!", ", é hora da batalha!.", ", eu escolho você!" }, storage = 0},
+	["backpoke"] = {talks = {", obrigado.", ", bom trabalho.", ", já chega. Volte!" }, storage = 0},
+	["downability"] = {talks = {", deixe-me descer.", ", obrigado." }, storage = 0},
 }
 
 types = {"normal", "fire", "fighting", "water", "flying", "grass", "poison", "electric", "ground", "psychic", "rock", "ice", "bug", "dragon", "ghost", "dark", "steel", "fairy"}
 
 typeTable = {
-["normal"] = {super = {"none"}, weak = {"rock", "steel"}, non = {"ghost"}, stoneId = 12214, color = 129, effDmg = 8, damageID = NORMALDAMAGE},
-
-["fire"] = {super = {"bug", "grass", "ice", "steel"}, weak = {"dragon", "fire", "rock", "water"}, non = {"none"}, stoneId = 12210, color = 192, damageID = FIREDAMAGE},
-
+["normal"] = {super = {"none"}, weak = {"rock", "steel"}, non = {"ghost"}, stoneId = 12214, color = 129, damageID = NORMALDAMAGE},
+["fire"] = {super = {"bug", "grass", "ice", "steel"}, weak = {"dragon", "fire", "rock", "water"}, non = {"none"}, stoneId = 12210, color = 144, damageID = FIREDAMAGE},
 ["fighting"] = {super = {"dark", "ice", "normal", "rock", "steel"}, weak = {"bug", "fairy", "flying", "poison", "psychic"}, non = {"ghost"}, stoneId = 12213, color = 127, damageID = FIGHTINGDAMAGE},
-
-["water"] = {super = {"fire", "ground", "rock"}, weak = {"dragon", "grass", "water"}, non = {"none"}, stoneId = 12224, color = 10, damageID = WATERDAMAGE},
-
+["water"] = {super = {"fire", "ground", "rock"}, weak = {"dragon", "grass", "water"}, non = {"none"}, stoneId = 12224, color = 29, damageID = WATERDAMAGE},
 ["flying"] = {super = {"bug", "fighting", "grass"}, weak = {"electric", "rock", "steel"}, non = {"none"}, stoneId = 12214, color = 172, damageID = FLYINGDAMAGE},
-
-["grass"] = {super = {"ground", "rock", "water"}, weak = {"bug", "dragon", "fire", "flying", "grass", "poison", "steel"}, non = {"none"}, stoneId = 12211, color = 30, effDmg = 7, damageID = GRASSDAMAGE},
-
-["poison"] = {super = {"fairy", "grass"}, weak = {"ghost", "ground", "poison", "rock"}, non = {"steel"}, stoneId = 12215, color = 103, effDmg = 8, damageID = POISONDAMAGE},
-
-["electric"] = {super = {"flying", "water"}, weak = {"dragon", "electric", "grass"}, non = {}, stoneId = 12220, color = 211, damageID = ELECTRICDAMAGE},
-
-["ground"] = {super = {"electric", "fire", "poison", "rock", "steel"}, weak = {"bug", "grass"}, non = {"flying", "electric", "ghost"}, stoneId = 12222, color = 120, damageID = GROUNDDAMAGE},
-
+["grass"] = {super = {"ground", "rock", "water"}, weak = {"bug", "dragon", "fire", "flying", "grass", "poison", "steel"}, non = {"none"}, stoneId = 12211, color = 26, damageID = GRASSDAMAGE},
+["poison"] = {super = {"fairy", "grass"}, weak = {"ghost", "ground", "poison", "rock"}, non = {"steel"}, stoneId = 12215, color = 103, damageID = POISONDAMAGE},
+["electric"] = {super = {"flying", "water"}, weak = {"dragon", "electric", "grass"}, non = {}, stoneId = 12220, color = 210, damageID = ELECTRICDAMAGE},
+["ground"] = {super = {"electric", "fire", "poison", "rock", "steel"}, weak = {"bug", "grass"}, non = {"flying", "electric"}, stoneId = 12222, color = 121, damageID = GROUNDDAMAGE},
 ["psychic"] = {super = {"fighting", "poison"}, weak = {"psychic", "steel", "dark"}, non = {}, stoneId = 12221, color = 125, damageID = PSYCHICDAMAGE},
-
-["rock"] = {super = {"bug", "fire", "flying", "ice"}, weak = {"fighting", "ground", "steel"}, non = {"none"}, stoneId = 12223, color = 129, damageID = ROCKDAMAGE},
-
+["rock"] = {super = {"bug", "fire", "flying", "ice"}, weak = {"fighting", "ground", "steel"}, non = {"none"}, stoneId = 12223, color = 127, damageID = ROCKDAMAGE},
 ["ice"] = {super = {"dragon", "flying", "grass", "ground"}, weak = {"fire", "ice", "steel", "water"}, non = {"none"}, stoneId = 12225, color = 71, damageID = ICEDAMAGE},
-
 ["bug"] = {super = {"dark", "grass", "psychic"}, weak = {"fairy", "fighting", "fire", "flying", "ghost", "poison", "steel"}, non = {"none"}, stoneId = 12212, color = 30, damageID = BUGDAMAGE},
-
 ["dragon"] = {super = {"dragon"}, weak = {"steel"}, non = {"fairy"}, stoneId = 12219, color = 175, damageID = DRAGONDAMAGE},
-
 ["ghost"] = {super = {"ghost", "psychic"}, weak = {"dark"}, non = {"normal"}, stoneId = 12216, color = 77, damageID = GHOSTDAMAGE},
-
 ["dark"] = {super = {"ghost", "psychic"}, weak = {"dark", "fairy", "fighting"}, non = {"dark"}, stoneId = 12216, color = 53, damageID = DARKDAMAGE},
-
 ["steel"] = {super = {"fairy", "ice", "rock"}, weak = {"electric", "fire", "steel", "water"}, non = {"none"}, stoneId = 12217, color = 172, damageID = STEELDAMAGE},
-
 ["fairy"] = {super = {"dark", "dragon", "fighting"}, weak = {"fire", "poison", "steel"}, non = {"none"}, stoneId = 12214, color = 130, damageID = NORMALDAMAGE},
 } 
 
@@ -624,7 +607,6 @@ oldpokedexToCatch = {
 {"Shiny Dratini", 15, 11470, 50000},
 {"Shiny Dragonair", 45, 11480, 100000},
 {"Shiny Dragonite", 85, 11490, 300000},
-{"Shiny Weezing", 85, 11510, 300000},
 ---------------old johto-----------
 {"Chikorita", 18, 1152, 10000},
 {"Bayleef", 38, 1153, 15000},

@@ -29,7 +29,7 @@ function onSay(cid, words, param, channel)
 		
 		for a, b in pairs(megasToPlayer) do
 			if mega == b.id then 
-				addPokeToPlayer(cid, b.pokeName, 0, nil, "poke", false, a)
+				addPokeToPlayer(cid, b.pokeName, 0, nil, "yume", true, a)
 				break
 			end
 		end	

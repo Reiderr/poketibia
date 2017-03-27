@@ -1,6 +1,6 @@
 pokes = {         
 ---////////// novos
-['Teste'] = {offense = 0, defense = 0, specialattack = 0, life = 900000, vitality = 5000000, agility = 0, exp = 0, level = 1, wildLvl = 1, type = 'normal', type2 = 'no type'},
+['Teste'] = {offense = 0, defense = 0, specialattack = 0, life = 15000, vitality = 5000000, agility = 0, exp = 0, level = 1, wildLvl = 1, type = 'normal', type2 = 'no type'},
 
 
 ['Treecko'] = {offense = 0.7, defense = 6, specialattack = 5, life = 1650, vitality = 3.5, agility = 190, exp = 90, level = 20, wildLvl = 30, type = 'grass', type2 = 'poison'},
@@ -17,7 +17,7 @@ pokes = {
 
 ['Mudkip'] = {offense = 0.9, defense = 6, specialattack = 5, life = 1100, vitality = 3.5, agility = 190, exp = 45, level = 1, wildLvl = 30, type = 'water', type2 = 'no type'},
 ['Marshtomp'] = {offense = 1.2, defense = 7, specialattack = 8, life = 2550, vitality = 6.7, agility = 200, exp = 90, level = 40, wildLvl = 50, type = 'water', type2 = 'no type'},
-['Swampert'] = {offense = 1.9, defense = 9, specialattack = 10, life = 4700, vitality = 10.7, agility = 210, exp = 210, level = 85, wildLvl = 95, type = 'water', type2 = 'ground'},
+['Swampert'] = {offense = 1.9, defense = 9, specialattack = 10, life = 4700, vitality = 10.7, agility = 210, exp = 210, level = 85, wildLvl = 95, type = 'water', type2 = 'no type'},
 
 ['Lotad'] = {offense = 0.8, defense = 6, specialattack = 4, life = 1650, vitality = 4.3, agility = 200, exp = 64, level = 20, wildLvl = 30, type = 'grass', type2 = 'no type'},
 ['Lombre'] = {offense = 1.2, defense = 8, specialattack = 6.3, life = 3550, vitality = 6.5, agility = 200, exp = 141, level = 40, wildLvl = 50, type = 'grass', type2 = 'no type'},
@@ -94,7 +94,7 @@ pokes = {
 
 ['Castform'] = {offense = 0.7, defense = 7, specialattack = 3, life = 250, vitality = 3, agility = 180, exp = 75, level = 10, wildLvl = 10, type = 'normal', type2 = 'no type'},
 
-['Kecleon'] = {offense = 0.7, defense = 7, specialattack = 3, life = 250, vitality = 3, agility = 180, exp = 75, level = 10, wildLvl = 10, type = 'normal', type2 = 'no type'},
+['Kacleon'] = {offense = 0.7, defense = 7, specialattack = 3, life = 250, vitality = 3, agility = 180, exp = 75, level = 10, wildLvl = 10, type = 'normal', type2 = 'no type'},
 
 ['Shuppet'] = {offense = 9, defense = 22.1, specialattack = 22.5, life = 5000, vitality = 35.55, agility = 219, exp = 3150, level = 150, wildLvl = 150, type = 'ghost', type2 = 'no type'},
 ['Banette'] = {offense = 9, defense = 22.1, specialattack = 22.5, life = 5000, vitality = 35.55, agility = 219, exp = 3150, level = 150, wildLvl = 150, type = 'ghost', type2 = 'no type'},
@@ -727,7 +727,7 @@ pokes = {
 
 ['Electrode'] = {offense = 1.2, defense = 8, specialattack = 7, life = 1300, vitality = 4.6, agility = 190, exp = 95, level = 35, wildLvl = 45, type = 'electric', type2 = 'no type'},
 
-['Politoed'] = {offense = 1.2, defense = 6.5, specialattack = 5, life = 2700, vitality = 9, agility = 200, exp = 185, level = 65, wildLvl = 75, type = 'water', type2 = 'no type'},
+['Politoed'] = {offense = 1.2, defense = 7.5, specialattack = 9, life = 2700, vitality = 9, agility = 200, exp = 185, level = 65, wildLvl = 75, type = 'water', type2 = 'no type'},
 
 ['Shiny Jynx'] = {offense = 2.2, defense = 10, specialattack = 13.65, life = 4200, vitality = 14.5, agility = 230, exp = 800, level = 100, wildLvl = 250, type = 'ice', type2 = 'psychic'},
 

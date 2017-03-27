@@ -81,7 +81,7 @@ if((msgcontains(msg, 'hi') or msgcontains(msg, 'heal') or msgcontains(msg, 'help
 
 	doCreatureAddHealth(cid, getCreatureMaxHealth(cid)-getCreatureHealth(cid))
 	doCureStatus(cid, "all", true)
-	doSendMagicEffect(getThingPos(cid), 14)
+	doSendMagicEffect(getThingPos(cid), 103)
 
 	local mypb = getPlayerSlotItem(cid, 8)
 	doSetItemAttribute(mypb.uid, "hpToDraw", 0)
@@ -106,7 +106,6 @@ if((msgcontains(msg, 'hi') or msgcontains(msg, 'heal') or msgcontains(msg, 'help
 			for c = 1, 15 do
 				local str = "move"..c
 				setCD(mypb.uid, str, 0)
-				doUpdateMoves(cid)
 			end
 			if getItemAttribute(mypb.uid, "happy") and getItemAttribute(mypb.uid, "happy") < baseNurseryHappiness then
 				doItemSetAttribute(mypb.uid, "happy", baseNurseryHappiness)
@@ -146,6 +145,7 @@ if((msgcontains(msg, 'hi') or msgcontains(msg, 'heal') or msgcontains(msg, 'help
            end
         end
     end
-    selfSay('Hello! We have restored your pokemon to full health. We hope to see you again.')
+    selfSay('Todos os seus Pokemons foram curados, boa Sorte em sua jornada!')
+	doCreatureSetSkullType(cid, 0)
 end
 end

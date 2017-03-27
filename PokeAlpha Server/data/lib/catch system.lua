@@ -53,7 +53,7 @@ local t = "normal = (.-), great = (.-), super = (.-), ultra = (.-), saffari = (.
 local msg = {}
 local countN, countG, countS, countU, countS2 = 0, 0, 0, 0, 0
 local maguCount, soraCount, yumeCount, duskCount, taleCount, moonCount, netCount, premierCount, tinkerCount, fastCount, heavyCount = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-table.insert(msg, "Você"..(catched == false and " já" or "").." gastou: ")
+table.insert(msg, "Vocï¿½"..(catched == false and " jï¿½" or "").." gastou: ")
 
 for n, g, s, u, s2, d, magu, sora, yume, dusk, tale, moon, net, premier, tinker, fast, heavy in strings:gmatch(t) do
     if tonumber(n) and tonumber(n) > 0 then 
@@ -314,7 +314,7 @@ local cap = getPlayerFreeCap(cid)
 		
         doPlayerSendTextMessage(cid, 27, "Congratulations, you caught a pokemon ("..poke..")!")
 		if cap <= 1 then   
-			doPlayerSendMailByName(getCreatureName(cid), item, 1)	
+			doPlayerSendMailByName(getCreatureName(cid), item, 1)
 			doPlayerSendTextMessage(cid, 27, "Since you are already holding six pokemons, this pokeball has been sent to your depot.")  
 		end
 

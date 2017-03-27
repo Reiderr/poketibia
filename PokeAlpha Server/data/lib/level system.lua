@@ -31,7 +31,7 @@ if isSummon(cid) then return true end
 		end
 		
 		if string.find(nick, "Shiny") then
-			pokeLifeMax = pokeLifeMax * 1 + (200 * pokes[nick].wildLvl)
+			pokeLifeMax = pokeLifeMax * 4 + (200 * pokes[nick].wildLvl)
 		end
 		
 		setCreatureMaxHealth(cid, pokeLifeMax) -- perfeita formula, os pokemons "ruins" só precisam de ajustes no pokemonStatus, tabela vitality.

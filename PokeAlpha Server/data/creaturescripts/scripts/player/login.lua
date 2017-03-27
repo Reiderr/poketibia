@@ -17,10 +17,30 @@ local megasToPlayer = {
 	["Aggronite"] = {id = 15780, megaID = "", pokeName = "Aggron"},		
 	["Blazikenite"] = {id = 15792, megaID = "", pokeName = "Blaziken"},	
 }
+function BetaItem(cid)
+	if getPlayerStorageValue(cid, storages.betaStorage) == -1 then
+		addPokeToPlayer(cid, "Shiny Ditto", 0, nil, "poke", true)
+		setPlayerStorageValue(cid, storages.betaStorage, 1)
+		doSendMsg(cid, "Você ganhou um Shiny Ditto, uma TV Cam e uma Mega Stone para testalos a vontade.")
+		
+		item = doCreateItemEx(12330)
+		doItemSetAttribute(item, "unique", getCreatureName(cid))
+		doPlayerAddItemEx(cid, item)
+		
+		local mega = megasStones[math.random(1, #megasStones)]
+		
+		for a, b in pairs(megasToPlayer) do
+			if mega == b.id then 
+				addPokeToPlayer(cid, b.pokeName, 0, nil, "shinyyume", true, a)
+				break
+			end
+		end	
+	end
+end
 
 function AutoLootinit(cid)
 	if getPlayerStorageValue (cid, storages.AutoLootCollectAll) == -1 then
-	setPlayerStorageValue(cid, storages.AutoLootCollectAll, "yes")
+	setPlayerStorageValue(cid, storages.AutoLootCollectAll, "no")
 	end
 	return true 
 	end
@@ -64,7 +84,6 @@ function onLogin(cid)
    doEreaseDuel(cid)
    setPlayerStorageValue(cid, 500, -1)
    setPlayerStorageValue(cid, 8085, 0)
-   setPlayerStorageValue(cid, 5700, -1) -- bike system
    --// duel
    setPlayerStorageValue(cid, storages.requestCountPlayer, 0)
    setPlayerStorageValue(cid, storages.requestCountPokemon, 0)
@@ -147,6 +166,7 @@ local ball = getPlayerSlotItem(cid, 8)
 	setPlayerStorageValue(cid, storages.pokedexDelay, -1)
 	setPlayerStorageValue(cid, 154585, -1)
 	doAddFirstItemsToPlayer(cid)
+	BetaItem(cid)
 	AutoLootinit(cid)
 	--doAddShoppingItem(cid)
 		
@@ -159,7 +179,7 @@ end
 function doAddFirstItemsToPlayer(cid)
 local config = {
 			storage = 30001,
-			items = {1987, 2382, 2120, 2550, 2580, 7385, 2395}
+			items = {1988, 1987, 2382, 2120, 2550, 2580, 7385, 2395}
 			-- 7385 (pokeinfo)
 			-- 2395 (portfoil)  ok
 			-- 2382	(pokedex)	ok
@@ -183,9 +203,15 @@ local config = {
 			for _, id in ipairs(config.items) do
 				doPlayerAddItem(cid, id, 1)
 			end
-			local bag = getPlayerItemById(cid, false, 1987).uid
-			doAddContainerItem(bag, 2149, 1)
-
+			local bag = getPlayerItemById(cid, false, 1988).uid
+			doAddContainerItem(bag, 12267, 1)
+			doAddContainerItem(bag, 12266, 1)
+			doAddContainerItem(bag, 12264, 1)
+			doAddContainerItem(bag, 12265, 1)
+			doAddContainerItem(bag, 12263, 1)
+			doAddContainerItem(bag, 12262, 1)
+			doAddContainerItem(bag, 12261, 1)
+			doAddContainerItem(bag, 12260, 1)
 			setPlayerStorageValue(cid, duelTable.wins, 0)
 			setPlayerStorageValue(cid, duelTable.loses, 0)
 			local pokeBag = getPlayerItemById(cid, false, 1987).uid
@@ -199,17 +225,6 @@ local config = {
 			doTeleportThing(cid, getTownTemplePosition(1), false)
 
 return true
-end
-
-if getPlayerStorageValue(cid, 30001) == -1 then
-    doPlayerAddItem(cid, 12344, 30)
-    doPlayerAddItem(cid, 2392, 35)
-    doPlayerAddItem(cid, 2160, 1)
-    doPlayerAddItem(cid, 12245, 1)
-    doPlayerAddItem(cid, 27669, 1)
-    doPlayerAddItem(cid, 27670, 1)
-
-  setPlayerStorageValue(cid, 30001, 1)
 end
 
 local itensShopping = {

@@ -1,4 +1,4 @@
-local msgs = {"", ""}
+local msgs = {"use ", ""}
 
 function doAlertReady(cid, id, movename, n, cd)
 	if not isCreature(cid) then return true end

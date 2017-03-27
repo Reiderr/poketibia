@@ -2,7 +2,7 @@ local function doSendMagicEffecte(pos, effect)
 	addEvent(doSendMagicEffect, 50, pos, effect)
 end
 -- 4664-4647;4608-4613;
-local waters = {11756, 4614, 4615, 4616, 4617, 4618, 4619}
+local waters = {11756, 4614, 4615, 4616, 4617, 4618, 4619, 4608, 4609, 4610, 4611, 4612, 4613, 7236, 4614, 4615, 4616, 4617, 4618, 4619, 4620, 4621, 4622, 4623, 4624, 4625, 4665, 4666, 4820, 4821, 4822, 4823, 4824, 4825}
                                                                       
 local flie = {'4820', '4821', '4822', '4823', '4824', '4825'}
                                                                    --alterado v1.6 tabelas agora em configuration.lua!

@@ -14,34 +14,26 @@ end
 local rank = tonumber(t[2])
 local clan = t[1]
 
-local diamond = 2149 -- id do "diamond"
-local price = 50 -- preço que custa a cada vez para mudar de clan
-local lvl = 120 -- lvl que precisa pra mudar de clan, aconselho não mudar, pq o rank 5 precisa de lvl 120...
-local msg1 = "Parabens! Você mudou para o clan "..clan.." rank "..rank.."!" -- Mensagem que ira mandar ao trocar de clan
-local msgfail = "Você precisa de "..price.." diamonds para mudar de clan." -- mensagem caso o player não tenha os diamonds
-local msgfail2 = "Você precistar estar no lvl "..lvl.." para mudar de clan." -- mensagem caso o player não tenha o level
-
-    if getPlayerItemCount(cid, diamond) >= price then
-        doPlayerSendTextMessage(cid, 27, msg1)
-        doPlayerRemoveItem(cid, diamond, price)
+    if getPlayerStorageValue(cid, 92823) < 1 then -- 7575 -- 92823
+        doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_RED, "Essa é sua primeira vez mudando de clan. Nas próximas, terá o custo de 10 diamonds.")
+        doPlayerSendTextMessage(cid, 27, "Agora você pertence ao clan "..clan..", rank: "..rank.."")
         setPlayerClan(cid, clan)
-        setPlayerClans(cid, clan)
+		setPlayerClans(cid, clan)
         setPlayerClanRank(cid, rank)
     else
-        if getPlayerItemCount(cid, diamond) < price then
-            return doPlayerSendCancel(cid, msgfail)
+        if getPlayerItemCount(cid, 2145) < 10 then
+            return doPlayerSendCancel(cid, "Você precisa de 10 diamonds para mudar de clan.")
         else
             return doPlayerSendCancel(cid, "Sorry, not possible.")
         end
-        if(getPlayerLevel(cid) < lvl) then
-            return doPlayerSendCancel(cid, msgfail2)
+        if(getPlayerLevel(cid) < 120) then
+            return doPlayerSendCancel(cid, "Você estar no level 120.")
         else
             return doPlayerSendCancel(cid, "Sorry, not possible.")
         end
-        doPlayerSendTextMessage(cid, 27, msg1)
-        doPlayerRemoveItem(cid, diamond, price)
+        doPlayerSendTextMessage(cid, 27, "Agora você pertence ao clan "..clan..", rank: "..rank.."")
+        doPlayerRemoveItem(cid, 2145, 10)
         setPlayerClan(cid, clan)
-        setPlayerClans(cid, clan)
         setPlayerClanRank(cid, rank)
     end
     return true

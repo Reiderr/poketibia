@@ -1,4 +1,4 @@
-local effect = 169                                 --by brun123    --alterado v1.9 \/ 
+local effect = 169                                   --by brun123    --alterado v1.9 \/ 
 local function func(cid, position, corpseid, effect)
       if not isCreature(cid) then return true end
       local corpse = getTileItemById(position, corpseid).uid

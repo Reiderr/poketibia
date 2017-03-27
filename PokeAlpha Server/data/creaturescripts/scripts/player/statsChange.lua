@@ -187,27 +187,26 @@ if not isPlayer(cid) then
 		
 	local boost_def, boost_attk = (0.7 * getPokemonBoost(cid)) / 100, (0.5 * getPokemonBoost(attacker)) / 100
 	
-if(combat == 128 or combat == 1) and getPlayerStorageValue(attacker, 21102) == -1 then -- ataque basico
-    doSendMagicEffect(getThingPos(cid), 350)
-    value = getEffectvineCombat(cid, attacker, value)
-    if value == 0 then 
-        return false
-    else
-        value = value * getOffense(attacker) -- buff ataque system 
-        local name = doCorrectString(getCreatureName(attacker))
-        if pokes[name] and pokes[name].level <= 5 and value ~= 0 then 
-            value = -math.random(pokes[name].offense, pokes[name].offense+5)
-        end
-    end
-else -- magia
-    value = getEffectvineSpell(attacker, spellNameFromAttacker, value, cid) -- checagem de efetividades de magia
-if value == 0 then 
-    setPlayerStorageValue(attacker, 21102, -1)
-    return false
-else
-    value = value * (1 + getSpecialAttack(attacker) / 100)
-end
-end	
+	if(combat == 128 or combat == 1) and spellNameFromAttacker == -1 then -- ataque basico
+	   doSendMagicEffect(getThingPos(cid), 3)
+	   value = getEffectvineCombat(cid, attacker, value)
+		if value == 0 then 
+		   return false
+		else
+		   value = value * getOffense(attacker) -- buff ataque system 
+		   local name = doCorrectString(getCreatureName(attacker))
+		   if pokes[name] and pokes[name].level <= 5 and value ~= 0 then 
+			  value = -math.random(pokes[name].offense, pokes[name].offense+5)
+		   end
+		end
+	else -- magia
+	   value = getEffectvineSpell(attacker, spellNameFromAttacker, value, cid) -- checagem de efetividades de magia
+	   if value == 0 then 
+		   return false
+		else
+		   value = value * (1 + getSpecialAttack(attacker) / 100)
+		end
+	end	
 	
 		if spellNameFromAttacker ~= -1 and value == 0 then value = -doForceDanoSpeel(attacker, spellNameFromAttacker) end
 		if value == 0 then value = -getEffectvineCombat(cid, attacker, getOffense(attacker)) end -- rever isto.. colocar dano base do xml
@@ -235,11 +234,9 @@ end
 		
 		if critical then -- X-Critical system
 		    value = value * 2 + criticalValue	
-		    doSendAnimatedText(getThingPos(cid), (value == 0 and "" or value) .. " STK", 194) return false
-		elseif (combat == 128 or combat == 1) and spellNameFromAttacker == -1 then 
-			else
-		raceCombat = typeTable[getMoveType(getCreatureName(attacker), spellNameFromAttacker)]		
-			doSendAnimatedText(getThingPos(cid), (value == 0 and "" or value), (isMega(cid)) and 180 or raceCombat.color)
+		    doSendAnimatedText(getThingPos(cid), (value == 0 and "" or value) .. "K", COLOR_BURN)
+		else
+			doSendAnimatedText(getThingPos(cid), (value == 0 and "" or value), raceCombat.color)
 		end
 		
 		if returnDamage then
@@ -281,7 +278,7 @@ end
 			   end
 			end
         end 
-
+		
 		if getCreatureName(cid) == "Kangaskhan" and math.random(1, 100) < 25 and isMega(cid) then
 		   docastspell(cid, "Groundshock", 0, 0)
 		end

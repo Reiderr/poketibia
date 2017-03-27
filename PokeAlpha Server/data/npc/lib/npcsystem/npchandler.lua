@@ -82,12 +82,12 @@ if(NpcHandler == nil) then
 			-- These are the default replies of all npcs. They can/should be changed individually for each npc.
 			[MESSAGE_GREET] 	= 'Welcome, |PLAYERNAME|! I have been expecting you.',
 			[MESSAGE_FAREWELL] 	= 'Good bye, |PLAYERNAME|!',
-			[MESSAGE_BUY] 		= 'Do you want to buy |ITEMCOUNT| |ITEMNAME| for |TOTALCOST| dollar?',
+			[MESSAGE_BUY] 		= 'Do you want to buy |ITEMCOUNT| |ITEMNAME| for |TOTALCOST| gold coins?',
 			[MESSAGE_ONBUY] 	= 'It was a pleasure doing business with you.',
-			[MESSAGE_BOUGHT] 	= 'Bought |ITEMCOUNT|x |ITEMNAME| for |TOTALCOST| dollar.',
-			[MESSAGE_SELL] 		= 'Do you want to sell |ITEMCOUNT| |ITEMNAME| for |TOTALCOST| dollar?',
-			[MESSAGE_ONSELL] 	= 'Thank you for this |ITEMNAME|, |PLAYERNAME| dollar.',
-			[MESSAGE_SOLD]	 	= 'Sold |ITEMCOUNT|x |ITEMNAME| for |TOTALCOST| dollar.',
+			[MESSAGE_BOUGHT] 	= 'Bought |ITEMCOUNT|x |ITEMNAME| for |TOTALCOST| gold.',
+			[MESSAGE_SELL] 		= 'Do you want to sell |ITEMCOUNT| |ITEMNAME| for |TOTALCOST| gold coins?',
+			[MESSAGE_ONSELL] 	= 'Thank you for this |ITEMNAME|, |PLAYERNAME| gold.',
+			[MESSAGE_SOLD]	 	= 'Sold |ITEMCOUNT|x |ITEMNAME| for |TOTALCOST| gold.',
 			[MESSAGE_MISSINGMONEY]	= 'Sorry, you don\'t have enough money.',
 			[MESSAGE_NEEDMONEY] 	= 'You do not have enough money.',
 			[MESSAGE_MISSINGITEM] 	= 'You don\'t even have that item, |PLAYERNAME|!',
@@ -249,8 +249,8 @@ if(NpcHandler == nil) then
 		local ret = true
 		for i, module in pairs(self.modules) do
 			local tmpRet = true
-			if(id == CALLBACK_MODULE_RESET and module.callbackOnModuleReset ~= nil) then
-				tmpRet = module:callbackOnModuleReset(unpack(arg))
+			if(id == CALLBACK_CREATURE_APPEAR and module.callbackOnCreatureAppear ~= nil) then
+				tmpRet = module:callbackOnCreatureAppear(unpack(arg))
 			elseif(id == CALLBACK_CREATURE_DISAPPEAR and module.callbackOnCreatureDisappear ~= nil) then
 				tmpRet = module:callbackOnCreatureDisappear(unpack(arg))
 			elseif(id == CALLBACK_CREATURE_SAY and module.callbackOnCreatureSay ~= nil) then
@@ -271,8 +271,8 @@ if(NpcHandler == nil) then
 				tmpRet = module:callbackOnFarewell(unpack(arg))
 			elseif(id == CALLBACK_MESSAGE_DEFAULT and module.callbackOnMessageDefault ~= nil) then
 				tmpRet = module:callbackOnMessageDefault(unpack(arg))
-			elseif(id == CALLBACK_CREATURE_APPEAR and module.callbackOnCreatureAppear ~= nil) then
-				tmpRet = module:callbackOnCreatureAppear(unpack(arg))
+			elseif(id == CALLBACK_MODULE_RESET and module.callbackOnModuleReset ~= nil) then
+				tmpRet = module:callbackOnModuleReset(unpack(arg))
 			end
 
 			if(not tmpRet) then

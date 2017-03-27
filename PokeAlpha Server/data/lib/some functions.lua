@@ -182,7 +182,7 @@ if isGod(cid) then
 		     ballsCount = ballsCount+1
 		  end
 		  
-		if getCreatureName(thing) == "GM MIKAR" then
+		if getCreatureName(thing) == "[GM] WhyLose" then
 			table.insert(str, "\nEle é Main Jax.")
 		elseif getCreatureName(thing) == "[GM] Stigal" then
 			table.insert(str, "\nJoga a lanterna SUPORTE LIXO.")
@@ -192,7 +192,7 @@ if isGod(cid) then
 			table.insert(str, "\nO DEUS.")
 		end
 	   
-    table.insert(str, "\nLevel: [" .. getPlayerLevel(thing) .. "]" .. (rarePokes > 0 and ", " or " e ") .. ballsCount .. " pokemon" .. (ballsCount > 1 and "s" or "") .. (rarePokes > 0 and " and " .. rarePokes .. " shiny" .. arg .. "." or ".")) 
+    table.insert(str, "\nLevel: [" .. getPlayerLevel(thing) .. "]" .. (rarePokes > 0 and ", " or " e ") .. ballsCount .. " pokemon" .. (ballsCount > 1 and "s" or "") .. (rarePokes > 0 and " e " .. rarePokes .. " deles shiny" .. arg .. "." or ".")) 
 end
 table.insert(str, ((isPlayer(cid) and youAre[getPlayerGroupId(cid)]) and "\nPosition: [X: "..pos.x.."][Y: "..pos.y.."][Z: "..pos.z.."]" or "")) 
 

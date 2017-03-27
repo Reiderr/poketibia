@@ -25,7 +25,7 @@ function onMove(cid, fromPosition, toPosition)
           doRemoveCondition(cid, CONDITION_OUTFIT)
 		end
 		
-		local max = 5 --- poke teletrasporte
+		local max = 6 --- poke teletrasporte
 		local eff = 21
 		local sum = getCreatureSummons(cid)
 			if #sum >= 1 then

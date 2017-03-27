@@ -1,8 +1,8 @@
 local poke = {"Espeon", "Shiny Xatu", "Jynx", "Shiny Jynx", "Xatu", "Natu", "Exeggutor", "Slowking", "Slowbro", "Shiny Mr. Mime", 'Mew', 'Mewtwo', 'Abra', 'Kadabra', 'Alakazam', 'Drowzee', 'Hypno', 'Mr. Mime', 'Porygon', 'Shiny Abra', 'Shiny Alakazam', 
-'Shiny Hypno', 'Porygon2', 'Wobbuffet'}  --alterado v1.9
+'Shiny Hypno', 'Porygon2'}  --alterado v1.9
 
 local etele = 9499
-local cdtele = 600
+local cdtele = 1
 
 local config = {
 premium = false, -- se precisa ser premium account (true or false)
@@ -10,8 +10,8 @@ battle = false	-- se precisa estar sem battle (true). Se colocar false, poderá u
 }
 
 local places = {
-[1] = {name = "cerulean", id = 1, sto = 897530},
-[2] = {name = "saffron", id = 2, sto = 897531},
+[1] = {name = "saffron", id = 1, sto = 897530},
+[2] = {name = "cerulean", id = 2, sto = 897531},
 [3] = {name = "celadon", id = 3, sto = 897532},
 [4] = {name = "Lavender", id = 4, sto = 897533},
 [5] = {name = "vermillion", id = 5, sto = 897534},
@@ -112,9 +112,10 @@ function onSay(cid, words, param)
 		telepos = getTownTemplePosition(townid)
 	end
 
-	doSendMagicEffect(getThingPos(summon), 211)
-	doSendMagicEffect(getThingPos(cid), 211)
-
+	doSendMagicEffect(getThingPos(summon), 29)
+	doSendMagicEffect(getThingPos(cid), 29)
+	
+	doReturnPokemon(cid, summon, item, 0)
 	doTeleportThing(cid, telepos, false)
 	local pos2 = getClosestFreeTile(cid, getPosByDir(getThingPos(cid), SOUTH))
 
@@ -124,8 +125,7 @@ function onSay(cid, words, param)
 
 	doCreatureSay(cid, ""..nome..", teleport to "..myplace.."!", TALKTYPE_ORANGE_1)
 	doCreatureSay(cid, ""..nome..", teleport to "..myplace.."!", TALKTYPE_ORANGE_1, false, 0, lastppos)
-doSendMagicEffect(getThingPos(summon), 211)
-	doSendMagicEffect(getThingPos(cid), 211)
+
 	doCreatureSetLookDir(cid, SOUTH)
 	exhaustion.set(cid, etele, cdtele)
 

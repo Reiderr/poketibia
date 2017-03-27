@@ -53,8 +53,7 @@ end
 
 else
 doCombatAreaHealth(cid, 0, pos, 0, 0, 0, CONST_ME_NONE)
-doCreateItem(460, 1, pos)
-doSendMagicEffect({x = pos.x + 1, y = pos.y + 1, z = pos.z}, 377)
+doCreateItem(11675, 1, pos)
 doTeleportThing(cid, pos)
 if getCreatureOutfit(cid).lookType == 667 or getCreatureOutfit(cid).lookType == 999 then
    markPosEff(cid, getThingPos(cid))                                  --edited porygon fly sistem

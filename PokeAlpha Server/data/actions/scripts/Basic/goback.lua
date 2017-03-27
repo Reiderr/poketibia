@@ -37,8 +37,7 @@ if item.itemid == usando and #getCreatureSummons(cid) > 0 then
 	local summon = getCreatureSummons(cid)[1]
 	if getPlayerStorageValue(summon, 9658783) == 1 and isInArray({"Aggron", "Sudowoodo", "Mega Aggron"}, getCreatureName(summon)) then
 	   doKillWildPoke(getCreatureSummons(cid)[1], getCreatureSummons(cid)[1])
-	   doPlayerSendCancel(cid, "Sorry, not possible")
-	   doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You must have a pokemon first.")
+	   doPlayerSendCancel(cid, "This pokemon is fainted.")
 	   if isInDuel(cid) then
 	      doRemoveCountPokemon(cid)
 	   end
@@ -62,8 +61,7 @@ if item.itemid == usando and #getCreatureSummons(cid) > 0 then
 		if isInArray(pokeballs[btype].all, item.itemid) then
 			doTransformItem(item.uid, pokeballs[btype].off)
 			doItemSetAttribute(item.uid, "hp", 0)
-			doPlayerSendCancel(cid, "Sorry, not possible")
-			doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You must have a pokemon first.")
+			doPlayerSendCancel(cid, "This pokemon is fainted.")
 		    return true
 		end
 	end
@@ -230,8 +228,8 @@ end
 		end
     
 else
-	doPlayerSendCancel(cid, "Sorry, not possible")
-    doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You must have a pokemon first.")
+
+    doPlayerSendCancel(cid, "This pokemon is fainted.")
 
 end
 	

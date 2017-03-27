@@ -1,6 +1,6 @@
 function onSay(cid, words, param, channel)
 	param = tonumber(param)
-	if(not param or param < 0 or param > 95) then
+	if(not param or param < 0 or param > 60) then
 		doPlayerSendCancel(cid, "Numeric param may not be lower than 0 and higher than " .. CONST_ANI_LAST .. ".")
 		return true
 	end

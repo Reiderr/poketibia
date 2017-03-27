@@ -192,13 +192,11 @@ setPlayerStorageValue(cid, 21102, spell)
 
 if spell == "Reflect" or spell == "Mimic"  or spell == "Magic Coat" then
 
-   if spell == "Reflect" then
-      eff = 135
-   elseif spell == "Mimic" then
-      eff = 419
-   elseif spell == "Magic Coat" then
+    if spell == "Magic Coat" then
       eff = 11
-   end  
+    else
+      eff = 135
+    end
 
 	doSendMagicEffect(getThingPosWithDebug(cid), eff)
 	setPlayerStorageValue(cid, storages.reflect, 1)        
@@ -218,8 +216,7 @@ if not isCreature(cid) or not isCreature(target) then return false end
 end
 
 addEvent(throw, 0, cid, target)
-addEvent(throw, 75, cid, target) --alterado v1.7
-addEvent(throw, 150, cid, target)
+addEvent(throw, 100, cid, target) --alterado v1.7
 
 elseif spell == "Fire Fist" then 
 
@@ -369,7 +366,7 @@ local function useSolarBeam(cid)
 			effect2 = 10
 			effect3 = 10
 			effect4 = 10
-			effect5 = 421
+			effect5 = 0
 			pos1.x = pos1.x + 2
 			pos1.y = pos1.y + 1
 			pos2.x = pos2.x + 3
@@ -380,7 +377,6 @@ local function useSolarBeam(cid)
 			pos4.y = pos4.y + 1
 			pos5.x = pos5.x + 6
 			pos5.y = pos5.y + 1
-			
 			area = solare
 		elseif getCreatureLookDir(cid) == 0 then
 			effect1 = 36
@@ -563,10 +559,9 @@ elseif spell == "Iron Head" then
 	doDanoWithProtect(cid, NORMALDAMAGE, getThingPosWithDebug(target), 0, -min, -max, 77)
     
 elseif spell == "Ember" then
-		local pos = getThingPosWithDebug(target)
-		local targut = doSendMagicEffect({x = pos.x + 1, y = pos.y + 1, z = pos.z}, 291)
+
 		doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), (isMega(cid) and getMegaID(cid) == "X") and 57 or 3)
-		doDanoInTargetWithDelay(cid, target, FIREDAMAGE, min, max, (isMega(cid) and getMegaID(cid) == "X") and 302 or targut)  --alterado v1.7
+		doDanoInTargetWithDelay(cid, target, FIREDAMAGE, min, max, (isMega(cid) and getMegaID(cid) == "X") and 302 or 15)  --alterado v1.7
 		
 		doBurnPoke(cid, target)
 
@@ -574,7 +569,6 @@ elseif spell == "Flamethrower" then
 
 	local flamepos = getThingPosWithDebug(cid)
     local effect = 255
-	local burn = doBurnPoke(cid, target)	
     local a = isCreature(target) and getCreatureDirectionToTarget(cid, target) or getCreatureLookDir(cid)
 
 	if a == 0 then
@@ -595,15 +589,14 @@ elseif spell == "Flamethrower" then
 		effect = (isMega(cid) and getMegaID(cid) == "X") and 294 or 108
 	end
 
-        doMoveInArea2(cid, 0, flamek, FIREDAMAGE, min, max, spell, burn)
-		doSendMagicEffect(flamepos, effect) 	
+        doMoveInArea2(cid, 0, flamek, FIREDAMAGE, min, max, spell)
+		doSendMagicEffect(flamepos, effect)  
      
 
 elseif spell == "Fireball" then
-	local burn = doBurnPoke(cid, target)	
+
 	doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), (isMega(cid) and getMegaID(cid) == "X") and 57 or 3)
-	addEvent(doDanoWithProtect, 200, cid, FIREDAMAGE, getThingPosWithDebug(target), waba, min, max, (isMega(cid) and getMegaID(cid) == "X") and 302 or 6)
-	addEvent(doDanoWithProtect, 210, cid, FIREDAMAGE, getThingPosWithDebug(target), burn, min, max, (isMega(cid) and getMegaID(cid) == "X") and 302 or 6)
+	addEvent(doDanoWithProtect, 200, cid, FIREDAMAGE, getThingPosWithDebug(target), waba, min, max, (isMega(cid) and getMegaID(cid) == "X") and 302 or 5)
 	
 elseif spell == "Fire Fang" then
 
@@ -693,13 +686,12 @@ local a = isCreature(target) and getCreatureDirectionToTarget(cid, target) or ge
 		
 elseif spell == "Magma Storm" then
 
-local eff = (isMega(cid) and getMegaID(cid) == "X") and {302, 301, 302, 418} or {6, 35, 6, 35}
+local eff = (isMega(cid) and getMegaID(cid) == "X") and {302, 301, 302, 301} or {6, 35, 6, 35}
 local area = {flames1, flames2, flames3, flames4}
-local burn = doBurnPoke(cid, target)	
 
-addEvent(doMoveInArea2, 2*450, cid, 2, flames0, FIREDAMAGE, min, max, spell, burn)
+addEvent(doMoveInArea2, 2*450, cid, 2, flames0, FIREDAMAGE, min, max, spell)
 for i = 0, 3 do
-    addEvent(doMoveInArea2, i*450, cid, eff[i+1], area[i+1], FIREDAMAGE, min, max, spell, burn)
+    addEvent(doMoveInArea2, i*450, cid, eff[i+1], area[i+1], FIREDAMAGE, min, max, spell)
 end
 
 elseif spell == "Bubbles" then
@@ -724,18 +716,10 @@ local t = {
 }
 local area = reto4
 
-doMoveInArea2(cid, 0, area, WATERDAMAGE, min, max, spell)
-doSendMagicEffect(t[a][2], t[a][1])
-
-elseif spell == "Giant Water Gun" then
-
-local a = isCreature(target) and getCreatureDirectionToTarget(cid, target) or getCreatureLookDir(cid)
-local p = getThingPosWithDebug(cid)
-
 if (isMega(cid)) then
    t = {
 	[0] = {299, {x=p.x+1, y=p.y-2, z=p.z}},
-	[1] = {296, {x=p.x+5, y=p.y+1, z=p.z}}, 
+	[1] = {296, {x=p.x+5, y=p.y+1, z=p.z}},      --alterado v1.8
 	[2] = {298, {x=p.x+1, y=p.y+5, z=p.z}},
 	[3] = {297, {x=p.x-1, y=p.y, z=p.z}},
 	[3] = {297, {x=p.x-1, y=p.y+1, z=p.z}},
@@ -745,35 +729,6 @@ end
 
 doMoveInArea2(cid, 0, area, WATERDAMAGE, min, max, spell)
 doSendMagicEffect(t[a][2], t[a][1])
-
-elseif spell == "Hand Water Gun" then
-
-local a = isCreature(target) and getCreatureDirectionToTarget(cid, target) or getCreatureLookDir(cid)
-local p = getThingPosWithDebug(cid)
-if (isMega(cid)) then
-   t = {
-[0] = {69, {x=p.x, y=p.y-1, z=p.z}},
-[1] = {70, {x=p.x+6, y=p.y, z=p.z}},
-[2] = {71, {x=p.x, y=p.y+6, z=p.z}},
-[3] = {72, {x=p.x-1, y=p.y, z=p.z}},
-   }
-   area = reto4
-end   
-
-if (isMega(cid)) then
-   b = {
-[0] = {69, {x=p.x-1, y=p.y-1, z=p.z}},
-[1] = {70, {x=p.x+6, y=p.y-1, z=p.z}},
-[2] = {71, {x=p.x-1, y=p.y+6, z=p.z}},
-[3] = {72, {x=p.x-1, y=p.y-1, z=p.z}},
-   }
-   area1 = triplo7
-end 
-
-doMoveInArea2(cid, 0, area, WATERDAMAGE, min, max, spell)
-doSendMagicEffect(t[a][2], t[a][1])
-doMoveInArea2(cid, 0, area1, WATERDAMAGE, min, max, spell)
-doSendMagicEffect(b[a][2], b[a][1])
 	
 elseif spell == "Waterball" then
 		             
@@ -782,6 +737,17 @@ elseif spell == "Waterball" then
 	
 elseif spell == "Aqua Tail" then
 
+	local function rebackSpd(cid, sss)
+		if not isCreature(cid) then return true end
+		doChangeSpeed(cid, sss)
+		setPlayerStorageValue(cid, 446, -1)
+	end
+
+	local x = getCreatureSpeed(cid)
+	doFaceOpposite(cid)
+	doChangeSpeed(cid, -x)
+	addEvent(rebackSpd, 400, cid, x)
+	setPlayerStorageValue(cid, 446, 1)
 	doAreaCombatHealth(cid, WATERDAMAGE, getThingPosWithDebug(target), 0, -min, -max, 68)
 
 elseif spell == "Dragon Tail" then
@@ -845,7 +811,7 @@ elseif spell == "Harden" or spell == "Calm Mind" or spell == "Defense Curl" or s
    
     doCondition2(ret)
 
-elseif spell == "Bubble Blast" or spell == "Brine" then
+elseif spell == "Bubble Blast" then
 
                  --cid, effDist, effDano, areaEff, areaDano, element, min, max
        doMoveInAreaMulti(cid, 2, 68, bullet, bulletDano, WATERDAMAGE, min, max)
@@ -859,7 +825,7 @@ ret.check = 0
 ret.first = true
 ret.cond = "Paralyze"
 
-       doMoveInArea2(cid, 182, reto5, NORMALDAMAGE, min, max, spell, ret)              
+       doMoveInArea2(cid, 118, reto5, NORMALDAMAGE, min, max, spell, ret)              
 
 elseif spell == "Hydropump" then
 
@@ -873,7 +839,7 @@ local pos = getThingPosWithDebug(cid)
 		doSendMagicEffect(pos, 53)
 	end
 	                                                          --alterado!!
-	for a = 1, 35 do
+	for a = 1, 20 do
 	    local lugar = {x = pos.x + math.random(-4, 4), y = pos.y + math.random(-3, 3), z = pos.z}
 	    addEvent(doSendBubble, a * 25, cid, lugar)
 	end
@@ -931,8 +897,7 @@ elseif spell == "Super Sonic" then
 	local rounds = math.random(4, 7)
 	rounds = rounds + math.floor(getPokemonLevel(cid) / 35)
 
-	doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 33)
-	
+	doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 32)
 	local ret = {}
 	ret.id = target
 	ret.cd = rounds
@@ -958,12 +923,13 @@ for i = 0, 3 do
 end
 	
 elseif spell == "Psybeam" then
+
 local a = isCreature(target) and getCreatureDirectionToTarget(cid, target) or getCreatureLookDir(cid)
 local t = {
 [0] = 58,       --alterado v1.6
-[1] = 56,
+[1] = 234,
 [2] = 58,
-[3] = 56,
+[3] = 209,
 }
 
 doMoveInArea2(cid, t[a], reto4, psyDmg, min, max, spell)     --alterado v1.4
@@ -981,7 +947,7 @@ local t = {
 local ret = {}
 ret.id = 0
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Miss"
@@ -990,13 +956,15 @@ doCreatureSetLookDir(cid, a)  --sera? '-'
 stopNow(cid, 1000)  
 doMoveInArea2(cid, t[a], reto5, GROUNDDAMAGE, 0, 0, spell, ret) 
 
-elseif spell == "Confusion" then
+elseif spell == "Confusion" or spell == "Night Shade" then
 
     local rounds = math.random(4, 7)       --rever area...
     rounds = rounds + math.floor(getPokemonLevel(cid) / 35)
     
     if spell == "Confusion" then
        dano = psyDmg             --alterado v1.4
+    else
+       dano = ghostDmg
     end
 
 	local ret = {}
@@ -1006,25 +974,6 @@ elseif spell == "Confusion" then
     ret.cond = "Confusion"
 
     doMoveInArea2(cid, 136, selfArea1, dano, min, max, spell, ret)
-	
-elseif spell == "Night Shade" then
-
-    local rounds = math.random(4, 7)       --rever area...
-    rounds = rounds + math.floor(getPokemonLevel(cid) / 35) 
-    
-    if spell == "Night Shade" then
-       dano = ghostDmg
-    end
-
-	local ret = {}
-    ret.id = 0
-    ret.check = 0
-    ret.cd = rounds
-    ret.cond = "Confusion"
-	
-local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y+1, z=p.z}, 383)
-addEvent(doMoveInArea2, 50, cid, 384, selfArea1, dano, min, max, spell, ret)
 	
 elseif spell == "Horn Attack" then
        
@@ -1203,14 +1152,15 @@ elseif spell == "Thunder Bolt" then
 		doSendDistanceShoot(frompos, getThingPosWithDebug(target), 41)
 		addEvent(doDanoInTarget, ry * 11, cid, target, ELECTRICDAMAGE, min, max, 48) --alterado v1.7
 		end
-	
+
 		local function doThunderUp(cid, target)
 			if not isCreature(target) or not isCreature(cid) then return true end
-		local pos = getThingPosWithDebug(cid)
-		local xrg = math.floor((pos.x-1 - pos.x-7))
-		local topos = pos
+		local pos = getThingPosWithDebug(target)
+		local mps = getThingPosWithDebug(cid)
+		local xrg = math.floor((pos.x - mps.x) / 2)
+		local topos = mps
 		topos.x = topos.x + xrg
-		local rd =  8
+		local rd =  7
 		topos.y = topos.y - rd
 		doSendDistanceShoot(getThingPosWithDebug(cid), topos, 41)
 		addEvent(doThunderFall, rd * 49, cid, topos, target)
@@ -1277,34 +1227,30 @@ elseif spell == "Comet Punch" then
     doDanoInTargetWithDelay(cid, target, ELECTRICDAMAGE, min, max, 118) --alterado v1.7
 	
 elseif spell == "Electric Storm" then             
-    local master = isSummon(cid) and getCreatureMaster(cid) or cid
-    local function doFall(cid)
-        for rocks = 1, 42 do
-            addEvent(fall, rocks*35, cid, master, ELECTRICDAMAGE, 41, 48)
-        end
-    end
-    
-    for up = 1, 10 do
-        addEvent(upEffect, up*75, cid, 41)
-    end
-    
-    addEvent(doFall, 450, cid)
-    local ret = {}
-    ret.id = 0
-    ret.cd = 9
-    ret.check = 0
-    ret.eff = 48
-    ret.spell = spell
-    ret.cond = "Stun"
 
-    addEvent(function()
-        if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-            setPlayerStorageValue(cid, 21102, spell)
-        end
-        
-        doMoveInArea2(cid, 0, BigArea2, ELECTRICDAMAGE, min, max, spell, ret)
-    end, 1400)
-	
+local master = isSummon(cid) and getCreatureMaster(cid) or cid
+
+local function doFall(cid)
+for rocks = 1, 42 do
+    addEvent(fall, rocks*35, cid, master, ELECTRICDAMAGE, 41, 48)
+end
+end
+
+for up = 1, 10 do
+    addEvent(upEffect, up*75, cid, 41)
+end
+addEvent(doFall, 450, cid)
+
+local ret = {}
+ret.id = 0
+ret.cd = 9
+ret.check = 0
+ret.eff = 48
+ret.spell = spell
+ret.cond = "Stun"
+
+addEvent(doMoveInArea2, 1400, cid, 0, BigArea2, ELECTRICDAMAGE, min, max, spell, ret)
+
 elseif spell == "Frenzy Plant" then             
 
 local master = isSummon(cid) and getCreatureMaster(cid) or cid
@@ -1375,7 +1321,7 @@ local contudion = spell == "Mud Shot" and "Miss" or "Stun"
 local ret = {}
 ret.id = target
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = getPlayerStorageValue(target, conds[contudion])
 ret.spell = spell
 ret.cond = contudion
@@ -1444,9 +1390,6 @@ local RollOuts = {
        if RollOuts[name] then
           doSetCreatureOutfit(cid, RollOuts[name], -1)  
        end
-	   if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
        doDanoWithProtect(cid, ROCKDAMAGE, getThingPosWithDebug(cid), splash, -min, -max, 0)
     end
 
@@ -1464,10 +1407,7 @@ local d = isCreature(target) and getCreatureDirectionToTarget(cid, target) or ge
 
 function sendAtk(cid, area, areaEff, eff)
 if isCreature(cid) then
-   if not isSightClear(p, area, false) then return true end  
-if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end   --testar o atk!!
+   if not isSightClear(p, area, false) then return true end                                             --testar o atk!!
    doAreaCombatHealth(cid, GROUNDDAMAGE, areaEff, 0, 0, 0, eff)    
    doAreaCombatHealth(cid, GROUNDDAMAGE, area, whirl3, -min, -max, 255)     
 end
@@ -1484,12 +1424,10 @@ local t = {
 addEvent(sendAtk, 325*a, cid, t[d][2], t[d][3], t[d][1])
 end                          
 	
-elseif spell == "Earthshock" or spell == "Earth Power" then
+elseif spell == "Earthshock" then
 
 local eff = getSubName(cid, target) == "Shiny Onix" and 179 or 127 --alterado v1.6.1              
-if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
+
 	doAreaCombatHealth(cid, GROUNDDAMAGE, getThingPosWithDebug(cid), splash, -min, -max, 255)
 
 	local sps = getThingPosWithDebug(cid)
@@ -1505,16 +1443,13 @@ local function doQuake(cid)
 if not isCreature(cid) then return false end
 if isSleeping(cid) and getPlayerStorageValue(cid, 3644587) >= 1 then return false end
 if isWithFear(cid) and getPlayerStorageValue(cid, 3644587) >= 1 then return true end
-if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
    doMoveInArea2(cid, eff, confusion, GROUNDDAMAGE, min, max, spell)
 end
 
-times = {0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500}
+times = {0, 500, 1000, 1500, 2300, 2800, 3300, 3800, 4600, 5100, 5600, 6100, 6900, 7400, 7900, 8400, 9200, 10000}
 
 setPlayerStorageValue(cid, 3644587, 1)
-addEvent(setPlayerStorageValue, 8500, cid, 3644587, -1)
+addEvent(setPlayerStorageValue, 10000, cid, 3644587, -1)
 for i = 1, #times do                   --alterado v1.4
     addEvent(doQuake, times[i], cid)
 end
@@ -1526,7 +1461,7 @@ elseif spell == "Stomp" then
     ret.id = 0
     ret.cd = 9
     ret.check = 0
-    ret.eff = 422
+    ret.eff = 34
     ret.spell = spell
     ret.cond = "Stun"   
        
@@ -1886,27 +1821,24 @@ elseif spell == "Restore" or spell == "Selfheal" then
 	
 	elseif spell == "Aqua Ring"  then
 	
+	local min = (getCreatureMaxHealth(cid) * 75) / 100
+	local max = (getCreatureMaxHealth(cid) * 85) / 100
+	
 	local function doHealArea(cid, min, max)
     local amount = math.random(min, max)
     if (getCreatureHealth(cid) + amount) >= getCreatureMaxHealth(cid) then
         amount = -(getCreatureHealth(cid)-getCreatureMaxHealth(cid))
-
     end
     if getCreatureHealth(cid) ~= getCreatureMaxHealth(cid) then
        doCreatureAddHealth(cid, amount)
        doSendAnimatedText(getThingPosWithDebug(cid), "+"..amount.."", 65)
     end
-    end	
-	local pos = (getThingPosWithDebug(cid))
-     times = {0, 700, 1400, 2100, 2800, 3500, 4200, 4900, 5600, 6300, 7000, 7700, 8400, 9100, 9800, 10500, 11200}
-
-	for i = 1, #times do
-       addEvent(doHealArea, times[i], cid, min, max)
-		addEvent(doSendMagicEffect, times[i], pos, 154)	  
-	end
-
-	
+    end
     
+	doSendMagicEffect(getThingPosWithDebug(cid), 132)
+    doHealArea(cid, min, max)
+    
+	
 elseif spell == "Healarea" then
 	
 	local min = (getCreatureMaxHealth(cid) * 50) / 100
@@ -1923,7 +1855,7 @@ elseif spell == "Healarea" then
     end
     end
     
-    local pos = getPosfromArea(cid, heal2)
+    local pos = getPosfromArea(cid, heal)
     local n = 0
     doHealArea(cid, min, max)
     
@@ -1991,18 +1923,19 @@ local function getCreatureHealthSecurity(cid)
 	return getCreatureHealth(cid) or 0
 end
 	local life = getCreatureHealthSecurity(target)
-	local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y+1, z=p.z}, 396)
+
 	doAreaCombatHealth(cid, GRASSDAMAGE, getThingPosWithDebug(target), 0, -min, -max, 14)
     
 	local newlife = life - getCreatureHealthSecurity(target)
-	
+
+	doSendMagicEffect(getThingPosWithDebug(cid), 14)
 	if newlife >= 1 then
 		if isCreature(cid) then
 	       doCreatureAddHealth(cid, newlife)
 		end
-       doSendAnimatedText(getThingPosWithDebug(cid), "+"..newlife.."", 35)
+       doSendAnimatedText(getThingPosWithDebug(cid), "+"..newlife.."", 32)
 	end  
+	
 elseif spell == "Poison Bomb" then
 
     doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 14)
@@ -2012,15 +1945,15 @@ elseif spell == "Poison Gas" then
 
 local dmg = isSummon(cid) and getMasterLevel(cid)+getPokemonBoost(cid) or getPokemonLevel(cid)
 
-local ret = {id = 0, cd = 13, eff = 422, check = 0, spell = spell, cond = "Miss"}
+local ret = {id = 0, cd = 13, eff = 34, check = 0, spell = spell, cond = "Miss"}
 local ret2 = {id = 0, cd = 13, check = 0, damage = dmg, cond = "Poison"}                          --rever isso ainda!!
   
 	local function gas(cid)
-           doMoveInArea2(cid, 423, confusion, POISONDAMAGE, 0, 0, spell, ret)
+           doMoveInArea2(cid, 114, confusion, POISONDAMAGE, 0, 0, spell, ret)
 		   doMoveInArea2(cid, 0, confusion, POISONDAMAGE, min, max, spell)
 	end
     	
-times = {0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500}
+times = {0, 500, 1000, 1500, 2300, 2800, 3300, 3800, 4600, 5100, 5600, 6100, 6900, 7400, 7900, 8400, 9200, 10000}
 
 for i = 1, #times do
     addEvent(gas, times[i], cid)                            
@@ -2043,18 +1976,27 @@ end
 
 
 elseif spell == "Revenge" then
-    local effs = {92, 93, 99, 94, 93, 99}
-	local rev = getThingPosWithDebug(cid)
+
+local function doRevenge(cid)
+if not isCreature(cid) then return false end
+if isSleeping(cid) and getPlayerStorageValue(cid, 3644587) >= 1 then return false end
+if isWithFear(cid) and getPlayerStorageValue(cid, 3644587) >= 1 then return true end
+local rev = getThingPosWithDebug(cid)
 rev.x = rev.x+1
 rev.y = rev.y+1
-    for i = 1, #effs do
-        addEvent(function()
-            if not isCreature(cid) then return true end
-            doAreaCombatHealth(cid, FIGHTINGDAMAGE, getThingPosWithDebug(cid), splash, -min, -max, 0)
-            doSendMagicEffect(rev, effs[i])
-        end, i * 550)
-    end
-	 
+doSendMagicEffect(rev, 99)
+	doAreaCombatHealth(cid, FIGHTINGDAMAGE, getThingPosWithDebug(cid), splash, -min, -max, 255)
+
+end
+
+times = {0, 500, 1000, 1500, 2300}
+
+setPlayerStorageValue(cid, 3644587, 1)
+addEvent(setPlayerStorageValue, 10000, cid, 3644587, -1)
+for i = 1, #times do                   --alterado v1.4
+addEvent(doRevenge, times[i], cid)
+end
+	
 	 
 elseif spell == "Close Combat" then
 	doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 26)
@@ -2070,7 +2012,7 @@ local ret = {}
 ret.id = 0
 ret.cd = 9
 ret.check = 0
-ret.eff = 422
+ret.eff = 34
 ret.cond = "Silence"
 ---
 local function doFall(cid)
@@ -2126,16 +2068,14 @@ local X = {
 
 local pos = X[mydir+1]
 
-for b = 1, 1 do
+for b = 1, 3 do
     addEvent(doSendMagicEffect, b * 70, pos[1], pos[2])
 end
 	
 doMoveInArea2(cid, 2, xScissor, BUGDAMAGE, min, max, spell)
 	
 elseif spell == "Psychic" then
-
-local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y+1, z=p.z}, 387)                        
+                                    
 	doDanoWithProtect(cid, psyDmg, getThingPosWithDebug(cid), selfArea2, min, max, 133)     
 	
 elseif spell == "Pay Day" then
@@ -2309,38 +2249,27 @@ ret.cond = "Slow"
 doMoveInArea2(cid, 0, triplo6, ICEDAMAGE, min, max, spell, ret)
 doSendMagicEffect(t[a][2], t[a][1])
 	
+	
 elseif spell == "Psy Pulse" or spell == "Cyber Pulse" or spell == "Dark Pulse" then
 
 damage = skill == "Dark Pulse" and DARKDAMAGE or psyDmg
 
 local function doPulse(cid, eff)
 if not isCreature(cid) then return true end
-if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
-   doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), eff2)
+   doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 3)
    doDanoInTargetWithDelay(cid, target, damage, min, max, eff)      --alterado v1.7
 end
 
    if spell == "Cyber Pulse" then
       eff = 11
    elseif spell == "Dark Pulse" then
-      eff = 395
-   elseif spell == "Psy Pulse" then
+      eff = 47  --efeito n eh esse mas... ;p
+   else
       eff = 133
-   end
-   
-   if spell == "Cyber Pulse" then
-      eff2 = 3
-   elseif spell == "Dark Pulse" then
-      eff2 = 18
-   elseif spell == "Psy Pulse" then
-      eff2 = 3
-   end    
+   end 
    
    addEvent(doPulse, 0, cid, eff)                
-   addEvent(doPulse, 50, cid, eff)
-   addEvent(doPulse, 100, cid, eff)
+   addEvent(doPulse, 250, cid, eff)
     
 elseif spell == "Psyusion" then
 
@@ -2407,7 +2336,7 @@ elseif spell == "Rock Slide" or spell == "Stone Edge" then
 
 atk = {
 ["Rock Slide"] = {11, 44, 0, 176},
-["Stone Edge"] = {93, 239}
+["Stone Edge"] = {11, 239}
 }                          
 
 local effD = getSubName(cid, target) == "Shiny Onix" and atk[spell][3] or atk[spell][1]
@@ -2418,20 +2347,18 @@ local eff = getSubName(cid, target) == "Shiny Onix" and atk[spell][4] or atk[spe
 			if not isCreature(target) or not isCreature(cid) then return true end
 		local pos = getThingPosWithDebug(target)
 		local ry = math.abs(frompos.y - pos.y)
-		if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
 		doSendDistanceShoot(frompos, getThingPosWithDebug(target), effD)
 		addEvent(doDanoInTarget, ry * 11, cid, target, ROCKDAMAGE, min, max, eff) --alterado v1.7
 		end
 
 		local function doRockUp(cid, target)
 			if not isCreature(target) or not isCreature(cid) then return true end
-		local pos = getThingPosWithDebug(cid)
-		local xrg = math.floor((pos.x-1 - pos.x-7))
-		local topos = pos
+		local pos = getThingPosWithDebug(target)
+		local mps = getThingPosWithDebug(cid)
+		local xrg = math.floor((pos.x - mps.x) / 2)
+		local topos = mps
 		topos.x = topos.x + xrg
-		local rd =  8
+		local rd =  7
 		topos.y = topos.y - rd
 		doSendDistanceShoot(getThingPosWithDebug(cid), topos, effD)
 		addEvent(doRockFall, rd * 49, cid, topos, target)
@@ -2439,8 +2366,8 @@ end
 
     setPlayerStorageValue(cid, 3644587, 1)
     addEvent(setPlayerStorageValue, 350, cid, 3644587, -1)
-	for thnds = 1, 3 do
-		addEvent(doRockUp, thnds * 230, cid, target)
+	for thnds = 1, 2 do
+		addEvent(doRockUp, thnds * 155, cid, target)
 	end 
 	
 elseif spell == "Falling Rocks" then
@@ -2452,23 +2379,16 @@ local master = isSummon(cid) and getCreatureMaster(cid) or cid
 ------------
 
 local function doFall(cid)
-for rocks = 1, 40 do
+for rocks = 1, 62 do
     addEvent(fall, rocks*35, cid, master, ROCKDAMAGE, effD, eff)
 end
 end
 
-for up = 1, 10 do                                                         
+for up = 1, 10 do                                                            
     addEvent(upEffect, up*75, cid, effD)
 end
-addEvent(doFall, 350, cid)
-    addEvent(function()
-        if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-            setPlayerStorageValue(cid, 21102, spell)
-        end
-        
-        doMoveInArea2(cid, 0, BigArea2, ROCKDAMAGE, min, max, spell, ret)
-    end, 1400)
-
+addEvent(doFall, 450, cid)
+addEvent(doDanoWithProtect, 1400, cid, ROCKDAMAGE, getThingPosWithDebug(cid), waterarea, -min, -max, 0)
 
 elseif spell == "Selfdestruct" then
                                 
@@ -2513,7 +2433,7 @@ local ret = {}
 ret.id = 0
 ret.cd = 9
 ret.check = 0
-ret.eff = 422
+ret.eff = 34
 ret.spell = spell
 ret.cond = "Stun"
 
@@ -2748,15 +2668,14 @@ if not isCreature(cid) or not isCreature(target) then return true end
 end
 
 sendBubbles(cid)
-addEvent(sendBubbles, 0, cid) 
-addEvent(sendBubbles, 150, cid) 
+addEvent(sendBubbles, 250, cid) 
 
 elseif  spell == "Swift" then
 
 local function sendSwift(cid, target)
 if not isCreature(cid) or not isCreature(target) then return true end
    doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 32)
-   doDanoInTargetWithDelay(cid, target, NORMALDAMAGE, min, max, 255)   --alterado v1.7
+   doDanoInTargetWithDelay(cid, target, NORMALDAMAGE, min, max, 3)   --alterado v1.7
 end
 
 addEvent(sendSwift, 100, cid, target)
@@ -2865,7 +2784,7 @@ if team[name] then
        local pokeSourceCode = doCreateMonsterNick(master, name,retireShinyName(name), getThingPos(master), true)
 	   
 	   if pokeSourceCode == "Nao" then
-		   doSendMsg(master, "Don't have space.")
+		   doSendMsg(master, "Não há espaço para seu pokemon.")
 		   return true 
 		end	 
 	   
@@ -2902,26 +2821,26 @@ local summons = getCreatureSummons(master)
 local posis = {[1] = pos1, [2] = pos2, [3] = pos3, [4] = pos4}
 
 if getSubName(cid, target) == "Scyther" then  --alterado v1.6.1
- eff = 64
+ eff = 39
 elseif getSubName(cid, target) == "Shiny Scyther" then  --alterado v1.6.1
- eff = 29
+ eff = 39
 else
  eff = 42  --alterado v1.5
 end
 
    if #getCreatureSummons(master) >= 2 and isCreature(target) then
       if isCreature(cid) then
-         addEvent(doDanoInTarget, 700, cid, target, BUGDAMAGE, -min, -max, 0) --alterado v1.7
+         addEvent(doDanoInTarget, 500, cid, target, BUGDAMAGE, -min, -max, 0) --alterado v1.7
          for i = 1, #summons do
              posis[i] = getThingPosWithDebug(summons[i])
              doDisapear(summons[i])
              stopNow(summons[i], 670)
              addEvent(doSendMagicEffect, 300, posis[i], 211)
-             addEvent(doSendDistanceShoot, 550, posis[i], getThingPosWithDebug(target), eff)
-             addEvent(doSendDistanceShoot, 750, getThingPosWithDebug(target), posis[i], eff)
-             addEvent(doSendDistanceShoot, 900, posis[i], getThingPosWithDebug(target), eff)
-             addEvent(doSendDistanceShoot, 1150, getThingPosWithDebug(target), posis[i], eff)
-             addEvent(doAppear, 1900, summons[i])
+             addEvent(doSendDistanceShoot, 350, posis[i], getThingPosWithDebug(target), eff)
+             addEvent(doSendDistanceShoot, 450, getThingPosWithDebug(target), posis[i], eff)
+             addEvent(doSendDistanceShoot, 600, posis[i], getThingPosWithDebug(target), eff)
+             addEvent(doSendDistanceShoot, 650, getThingPosWithDebug(target), posis[i], eff)
+             addEvent(doAppear, 670, summons[i])
          end
       end
     end
@@ -2974,8 +2893,7 @@ ret.cond = "Stun"
 for rocks = 1, 62 do
     addEvent(fall, rocks*35, cid, master, NORMALDAMAGE, -1, 147)
 end
-local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y+1, z=p.z}, 388)
+
 addEvent(doMoveInArea2, 500, cid, 0, BigArea2, NORMALDAMAGE, min, max, spell, ret) 
 
 elseif spell == "Fire Punch" then
@@ -3117,7 +3035,7 @@ elseif spell == "Venom Motion" then
 local ret = {}
 ret.id = 0
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Miss"
@@ -3343,7 +3261,7 @@ local master = isSummon(cid) and getCreatureMaster(cid) or cid
 local ret = {}
 ret.id = 0
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Miss"   
@@ -3373,7 +3291,7 @@ local master = isSummon(cid) and getCreatureMaster(cid) or cid
 local ret = {}
 ret.id = 0
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Miss"
@@ -3469,20 +3387,15 @@ addEvent(doMoveInArea2, 1400, cid, 2, BigArea2, ghostDmg, min, max, spell)
 
 elseif spell == "Invisible" then
 
-local pos1 = getThingPosWithDebug(cid) 
 doDisapear(cid)
-setPlayerStorageValue(cid, 9658783, 1)
-addEvent(setPlayerStorageValue, 4000, cid, 9658783, -1)
-addEvent(doSendMagicEffect, 3000, pos1, 386)
-doSendMagicEffect(getThingPosWithDebug(cid), 386)
+doSendMagicEffect(getThingPosWithDebug(cid), 134)
 if isMonster(cid) then
   local pos = getThingPosWithDebug(cid)                           --alterei!
   doTeleportThing(cid, {x=4, y=3, z=10}, false)
   doTeleportThing(cid, pos, false)
 end
-
 addEvent(doAppear, 4000, cid)
-
+        
 elseif spell == "Nightmare" then
 
     if not isSleeping(target) then
@@ -3608,7 +3521,7 @@ end
        doDisapear(cid)
        doChangeSpeed(cid, -getCreatureSpeed(cid))
        doSendMagicEffect(posi, 247)   
-       addEvent(doAppear, 4450, cid)
+       addEvent(doAppear, 6450, cid)
        addEvent(doRegainSpeed, 6450, cid)
        
        local uid = checkAreaUid(getCreaturePosition(cid), check, 1, 1)
@@ -3623,7 +3536,7 @@ end
        addEvent(divineBack, 2100, cid)
        addEvent(doDivine, 2200, cid, min, max, spell, rounds, area)
        
-elseif isInArray({"Predict", "Future Sight", "Camouflage", "Acid Armor", "Iron Defense", "Minimize"}, spell) then
+elseif isInArray({"Psychic Sight", "Future Sight", "Camouflage", "Acid Armor", "Iron Defense", "Minimize"}, spell) then
 
    local ret = {}
    ret.id = cid
@@ -3751,7 +3664,7 @@ elseif spell == "SmokeScreen" then
 local ret = {}
 ret.id = 0
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Miss"
@@ -3987,47 +3900,6 @@ end
 stopNow(target, 8 * 800)
 end
 
-elseif spell == "Protect" then
-if not isCreature(getCreatureTarget(cid)) then
-local function sendAtk(cid)
-if not isCreature(cid) then return true end
-setPlayerStorageValue(cid, 9658783, -1) 
-setPlayerStorageValue(cid, 734276, -1) 
-end
-setPlayerStorageValue(cid, 734276, 1) 
-setPlayerStorageValue(cid, 9658783, 1)
-pos = getThingPosWithDebug(cid)
-
-local function doSendEff(cid)
-if not isCreature(cid) then return true end
-doSendMagicEffect({x = pos.x + 1, y = pos.y + 1, z = pos.z}, 172)
-end
-for i = 0, 7 do
- addEvent(doSendEff, i*1000, cid)
-end
-addEvent(sendAtk, 8000, cid)  
-stopNow(cid, 8 * 800) 
-else
-local ret = {}
-ret.id = target
-ret.cd = 10
-ret.check = getPlayerStorageValue(target, conds["Sleep"])
-ret.eff = 0
-ret.cond = "Sleep"
-
-doSendDistanceShoot(getThingPosWithDebug(cid), getThingPosWithDebug(target), 24)
-pos = getThingPosWithDebug(target)
-addEvent(doMoveDano2, 150, cid, target, PSYCHICDAMAGE, 0, 0, ret, spell)
-local function doSendEff(cid)
-if not isCreature(cid) then return true end
-doSendMagicEffect({x = pos.x + 1, y = pos.y + 1, z = pos.z}, 172)
-end
-for i = 0, 7 do
- addEvent(doSendEff, i*1000, cid)
-end
-stopNow(target, 8 * 800)
-end
-
 elseif spell == "Air Cutter" then
 local p = getThingPosWithDebug(cid)
 local d = isCreature(target) and getCreatureDirectionToTarget(cid, target) or getCreatureLookDir(cid)
@@ -4077,9 +3949,6 @@ local d = isCreature(target) and getCreatureDirectionToTarget(cid, target) or ge
 function sendAtk(cid, area, eff)
 if isCreature(cid) then 
    if not isSightClear(p, area, false) then return true end
-   if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
    doAreaCombatHealth(cid, psyDmg, area, 0, 0, 0, eff)    --alterado v1.4
    doAreaCombatHealth(cid, psyDmg, area, whirl3, -min, -max, 255)     --alterado v1.4
 end
@@ -4359,7 +4228,7 @@ local ret = {}
 ret.id = 0
 ret.cd = 9
 ret.check = 0
-ret.eff = 422
+ret.eff = 34
 ret.cond = "Silence"
 
 doMoveInAreaMulti(cid, 6, 116, multi, multiDano, WATERDAMAGE, min, max)
@@ -4395,15 +4264,6 @@ local function distEff(cid, target)
 if not isCreature(cid) or not isCreature(target) or not isSilence(target) then return true end  --alterado v1.6
    sendDistanceShootWithProtect(cid, getThingPosWithDebug(target), getThingPosWithDebug(cid), 38)
 end
-local function doPulse(cid, eff)
-if not isCreature(cid) then return true end
-   doDanoInTargetWithDelay(cid, target, damage, min, max, eff)      --alterado v1.7
-end
-local function voltar(cid, target)
-if not isCreature(cid) then return true end
-	doRegainSpeed(cid)
-	doRegainSpeed(target)
-end
 
 local ret = {}
 ret.id = target
@@ -4415,12 +4275,8 @@ ret.cond = "Silence"
 sendDistanceShootWithProtect(cid, getThingPosWithDebug(cid), getThingPosWithDebug(target), 38)
 addEvent(doMoveDano2, 100, cid, target, NORMALDAMAGE, 0, 0, ret, spell)
  
-for i = 1, 100 do
-    addEvent(distEff, i*100, cid, target)
-	 addEvent(doPulse, i*100, cid, eff) 
-	 doChangeSpeed(cid, -getCreatureSpeed(cid))
-doChangeSpeed(target, -getCreatureSpeed(target))
-	 addEvent(voltar, 10000, cid, target)
+for i = 1, 10 do
+    addEvent(distEff, i*930, cid, target)
 end 
 
 elseif spell == "Struggle Bug" then
@@ -4621,14 +4477,20 @@ end
 
 elseif spell == "Psy Impact" then
 
-local eff = {412, 413, 414, 415, 416, 417}
-
-for rocks = 1, 50 do
-    addEvent(fall, rocks*22, cid, master, PSYDAMAGE, -1, eff[math.random(1, 6)])
+local master = getCreatureMaster(cid) or 0
+local ret = {}
+ret.id = 0
+ret.cd = 9
+ret.eff = 0
+ret.check = 0
+ret.spell = spell
+ret.cond = "Miss"
+    
+for rocks = 1, 42 do
+    addEvent(fall, rocks*35, cid, master, psyDmg, -1, 98)
 end
 
-addEvent(doMoveInArea2, 800, cid, 0, BigArea2, PSYDAMAGE, min, max, spell) 
-
+addEvent(doMoveInArea2, 500, cid, 0, BigArea2, psyDmg, min, max, spell, ret) 
 
 elseif spell == "Two Face Shock" then
 
@@ -4738,21 +4600,21 @@ local function doTornado(cid)
 if isCreature(cid) then
 for j = 1, 4 do
    for i = 1, 6 do                                                  --41/207  -- 14/54
-       addEvent(sendDist, 150, cid, pos1[j][i], pos1[j][i+1], atk[spell][1], i*330)
-       addEvent(sendDano, 150, cid, pos1[j][i], atk[spell][2], i*300, min, max)
-       addEvent(sendDano, 150, cid, pos1[j][i], atk[spell][2], i*310, 0, 0)
+       addEvent(sendDist, 350, cid, pos1[j][i], pos1[j][i+1], atk[spell][1], i*330)
+       addEvent(sendDano, 350, cid, pos1[j][i], atk[spell][2], i*300, min, max)
+       addEvent(sendDano, 350, cid, pos1[j][i], atk[spell][2], i*310, 0, 0)
        ---
-       addEvent(sendDist, 150, cid, pos2[j][i], pos2[j][i+1], atk[spell][1], i*330)
-       addEvent(sendDano, 150, cid, pos2[j][i], atk[spell][2], i*300, min, max)
-       addEvent(sendDano, 150, cid, pos2[j][i], atk[spell][2], i*310, 0, 0)
+       addEvent(sendDist, 350, cid, pos2[j][i], pos2[j][i+1], atk[spell][1], i*330)
+       addEvent(sendDano, 350, cid, pos2[j][i], atk[spell][2], i*300, min, max)
+       addEvent(sendDano, 350, cid, pos2[j][i], atk[spell][2], i*310, 0, 0)
        ----
-       addEvent(sendDist, 300, cid, pos3[j][i], pos3[j][i+1], atk[spell][1], i*330)
-       addEvent(sendDano, 300, cid, pos3[j][i], atk[spell][2], i*300, min, max)
-       addEvent(sendDano, 300, cid, pos3[j][i], atk[spell][2], i*310, 0, 0)
+       addEvent(sendDist, 800, cid, pos3[j][i], pos3[j][i+1], atk[spell][1], i*330)
+       addEvent(sendDano, 800, cid, pos3[j][i], atk[spell][2], i*300, min, max)
+       addEvent(sendDano, 800, cid, pos3[j][i], atk[spell][2], i*310, 0, 0)
        ---
-       addEvent(sendDist, 300, cid, pos4[j][i], pos4[j][i+1], atk[spell][1], i*330)
-       addEvent(sendDano, 300, cid, pos4[j][i], atk[spell][2], i*300, min, max)
-       addEvent(sendDano, 300, cid, pos4[j][i], atk[spell][2], i*310, 0, 0)
+       addEvent(sendDist, 800, cid, pos4[j][i], pos4[j][i+1], atk[spell][1], i*330)
+       addEvent(sendDano, 800, cid, pos4[j][i], atk[spell][2], i*300, min, max)
+       addEvent(sendDano, 800, cid, pos4[j][i], atk[spell][2], i*310, 0, 0)
    end
 end
 end
@@ -4789,7 +4651,6 @@ for up = 1, 10 do
 end
 addEvent(doFall, 450, cid)
 addEvent(doMoveInArea2, 1400, cid, 2, BigArea2, SEED_BOMBDAMAGE, min, max, spell)
-
 
 
 elseif spell == "Reverse Earthshock" then
@@ -4894,21 +4755,22 @@ ret.cond = "Slow"
 		    local pos = getThingPosWithDebug(target)
 		    local ry = math.abs(frompos.y - pos.y)
 		    doSendDistanceShoot(frompos, pos, 39)
-		    addEvent(doMoveDano2, ry * 40, cid, target, ROCKDAMAGE, min, max, ret, spell)
-		    addEvent(sendEffWithProtect, ry*40, cid, pos, 157)
+		    addEvent(doMoveDano2, ry * 11, cid, target, ROCKDAMAGE, min, max, ret, spell)
+		    addEvent(sendEffWithProtect, ry*11, cid, pos, 157)
         end
 
-					local function doRockUp(cid, target)
+		local function doRockUp(cid, target)
 			if not isCreature(target) or not isCreature(cid) then return true end
-		local pos = getThingPosWithDebug(cid)
-		local xrg = math.floor((pos.x-1 - pos.x-7))
-		local topos = pos
-		topos.x = topos.x + xrg
-		local rd =  8
-		topos.y = topos.y - rd
+		    local pos = getThingPosWithDebug(target)
+		    local mps = getThingPosWithDebug(cid)
+		    local xrg = math.floor((pos.x - mps.x) / 2)
+		    local topos = mps
+		    topos.x = topos.x + xrg
+		    local rd =  7
+		    topos.y = topos.y - rd
 		    doSendDistanceShoot(getThingPosWithDebug(cid), topos, 39)
 		    addEvent(doRockFall, rd * 49, cid, topos, target)
-		end				
+		end		
     addEvent(doRockUp, 155, cid, target)
     
 elseif spell == "Sand Tomb" then
@@ -4916,7 +4778,7 @@ elseif spell == "Sand Tomb" then
 local ret = {}
 ret.id = 0
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Miss"
@@ -5061,7 +4923,7 @@ elseif spell == "Bug Buzz" then
 local ret = {}
 ret.id = target
 ret.cd = 9
-ret.eff = 422
+ret.eff = 34
 ret.check = 0
 ret.spell = spell
 ret.cond = "Stun"  
@@ -5083,8 +4945,8 @@ if isSleeping(cid) then return true end
 end
 
 setPlayerStorageValue(cid, 3644587, 1)
-for r = 0, 18 do  
-    addEvent(doDano, 660 * r, cid)
+for r = 0, 10 do  
+    addEvent(doDano, 600 * r, cid)
 end
 addEvent(setSto, 600*10, cid)
 
@@ -5099,11 +4961,7 @@ end
 
 local function doDano(cid)
 if isSleeping(cid) then return true end
-local rev = getThingPosWithDebug(cid)
-rev.x = rev.x+1
-rev.y = rev.y+1
-doSendMagicEffect(rev, 381)
-	doAreaCombatHealth(cid, WATERDAMAGE, getThingPosWithDebug(cid), splash, -min, -max, 255)
+      doDanoWithProtect(cid, WATERDAMAGE, getThingPosWithDebug(cid), splash, min, max, 118)
 end
 
 setPlayerStorageValue(cid, 3644587, 1)
@@ -5168,10 +5026,10 @@ ret.cond = "Paralyze"
 local a = isCreature(target) and getCreatureDirectionToTarget(cid, target) or getCreatureLookDir(cid)
 local p = getThingPosWithDebug(cid)
 local t = {
-[0] = {94, {x=p.x, y=p.y-1, z=p.z}},    -- abajo
-[1] = {93, {x=p.x+2, y=p.y+1, z=p.z}},    -- derecha
-[2] = {95, {x=p.x+1, y=p.y+2, z=p.z}},  -- arriba
-[3] = {92, {x=p.x-1, y=p.y, z=p.z}},    -- izquierda         92 = izquierda       94 = arriba     93 = derecha        95 = abajo
+[0] = {92, {x=p.x, y=p.y-1, z=p.z}},
+[1] = {94, {x=p.x+2, y=p.y, z=p.z}},   
+[2] = {95, {x=p.x+1, y=p.y+2, z=p.z}},
+[3] = {93, {x=p.x-1, y=p.y, z=p.z}},  
 }
 
 doMoveInArea2(cid, 0, BrickBeak, FIGHTINGDAMAGE, min, max, spell, ret)
@@ -5319,37 +5177,17 @@ end
 
 	      local newlife = life - getCreatureHealthSecurity(pid)
 
-	local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y+1, z=p.z}, 396)
+			 doSendMagicEffect(getThingPos(cid), 14)
 		     setPlayerStorageValue(cid, 98654, 1)
 			 
 	      if newlife >= 1 then
 	         doCreatureAddHealth(cid, newlife)
-	         doSendAnimatedText(getThingPos(cid), "+"..newlife.."", 35)
+	         doSendAnimatedText(getThingPos(cid), "+"..newlife.."", 32)
           end  
 
        end
    end
    
-elseif spell == "Lifesteal" then
-
-local function getCreatureHealthSecurity(cid)
-	if not isCreature(cid) then return 0 end
-	return getCreatureHealth(cid) or 0
-end
-	local life = getCreatureHealthSecurity(target)
-	local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y+1, z=p.z}, 396)
-	doAreaCombatHealth(cid, POISONDAMAGE, getThingPosWithDebug(target), 0, -min, -max, 14)
-    
-	local newlife = life - getCreatureHealthSecurity(target)
-	
-	if newlife >= 1 then
-		if isCreature(cid) then
-	       doCreatureAddHealth(cid, newlife)
-		end
-       doSendAnimatedText(getThingPosWithDebug(cid), "+"..newlife.."", 35)
-	end  
 elseif spell == "Spores Reaction" then
 
 local random = math.random(1, 3)
@@ -5477,39 +5315,32 @@ elseif spell == "Electric Charge" then
    
 elseif spell == "Shock-Counter" then
 
-    local function sendStickEff(cid, dir)
-        if not isCreature(cid) then return true end
-        
-        if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-            setPlayerStorageValue(cid, 21102, spell)
-        end
-        
-        doAreaCombatHealth(cid, ELECTRICDAMAGE, getPosByDir(getThingPosWithDebug(cid), dir), 0, -min, -max, 207)
-    end
+local function sendStickEff(cid, dir)
+    if not isCreature(cid) then return true end
+       doAreaCombatHealth(cid, ELECTRICDAMAGE, getPosByDir(getThingPosWithDebug(cid), dir), 0, -min, -max, 207)
+	end
 
-    local function doStick(cid)
-        if not isCreature(cid) then return true end
-        
-        local t = {
-	      [1] = EAST,
-	      [2] = SOUTHEAST,
-	      [3] = SOUTH,
-	      [4] = SOUTHWEST,
-	      [5] = WEST,
-	      [6] = NORTHWEST,
-	      [7] = NORTH,
-	      [8] = NORTHEAST,
-	      [9] = EAST,
+	local function doStick(cid)
+	if not isCreature(cid) then return true end
+	local t = {
+	      [1] = SOUTHWEST,
+	      [2] = SOUTH,
+	      [3] = SOUTHEAST,
+	      [4] = EAST,
+	      [5] = NORTHEAST,
+	      [6] = NORTH,
+	      [7] = NORTHWEST,
+	      [8] = WEST,
+	      [9] = SOUTHWEST,
 		}
-        
-        for a = 1, 9 do
+		for a = 1, 9 do
             addEvent(sendStickEff, a * 140, cid, t[a])
-        end
-    end
+		end
+	end
 
-    doStick(cid, false, cid)
-    setPlayerStorageValue(cid, 98654, 1)
-
+	doStick(cid, false, cid)
+	setPlayerStorageValue(cid, 98654, 1)
+                 
 elseif spell == "Mirror Coat" then
 
     if spell == "Magic Coat" then
@@ -5937,7 +5768,7 @@ local RollOuts = {
     setPlayerStorageValue(cid, 3644587, 1)
     addEvent(setPlayerStorageValue, 9000, cid, 3644587, -1)
     for r = 1, 11 do  --8
-        addEvent(roll, 300 * r, cid, outfit)
+        addEvent(roll, 750 * r, cid, outfit)
     end
     addEvent(setOutfit, 9050, cid, outfit)
 end

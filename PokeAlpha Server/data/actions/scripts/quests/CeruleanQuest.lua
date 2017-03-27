@@ -8,12 +8,12 @@ local sto_ceru = 91120
 --//--
 function onUse(cid, item, frompos, item2, topos)
          if getPlayerLevel(cid) < 30 then   
-		 sendMsgToPlayer(cid, 27, "Sorry but you need to be at least level 30.")
+		 sendMsgToPlayer(cid, 27, "Desculpe somente level 30 pode terminar essa quest.")
 	     return true
 	     end
           --//
          if getPlayerStorageValue(cid, sto_ceru) >= 1 then
-         sendMsgToPlayer(cid, 27, "Sorry but you have done this quest.")
+         sendMsgToPlayer(cid, 27, "Desculpe você ja terminou essa quest!")
          return true
 		 end
 		 --//
@@ -24,6 +24,6 @@ function onUse(cid, item, frompos, item2, topos)
 	   --//
 setPlayerStorageValue(cid, sto_ceru, 1)	   
 doTeleportThing(cid, getTownTemplePosition(getPlayerTown(cid)))
-sendMsgToPlayer(cid, 27, "¡Congratulations! You complete the quest.")
+sendMsgToPlayer(cid, 27, "Parabéns você terminou a Cerulean Quest!")
 return true
 end

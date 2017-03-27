@@ -11,10 +11,10 @@ end
 function createChannel(cid, buffer)
 if getGlobalStorageValue(storages.globalsTV) == -1 then setGlobalStorageValue(storages.globalsTV, "") end
 if buffer:explode("/")[2]:len() < 6 then 
-   doSendMsg(cid, "Your channel need at least 6 characters to open.")
+   doSendMsg(cid, "O canal deve ter no minimo 6 caracteres.")
    return true
 elseif buffer:explode("/")[2]:len() > 11 then 
-	doSendMsg(cid, "Your channel need at least 11 characters to open.")
+	doSendMsg(cid, "O canal deve ter no maximo 11 caracteres.")
     return true
 end
 setGlobalStorageValue(storages.globalsTV, getGlobalStorageValue(storages.globalsTV) .. "/" .. getCreatureName(cid))
@@ -48,7 +48,7 @@ if not isCreature(cid) then return true end
 	removeAllPlayerInTheChannel(cid)
 	doRemoveIntoPrivateChannel(cid, getCreatureName(cid))
 	removePlayerInTheChannel(cid)
-	doSendMsg(cid, "You close the channel.")
+	doSendMsg(cid, "Você fechou seu canal.")
 	doResetPlayerTVSystem(cid)
 end
 
@@ -58,7 +58,7 @@ if not isCreature(cid) then return true end
 	--doRemoveIntoPrivateChannel(cid, getCreatureName(cid))
 	removePlayerInTheChannel(cid)
 	doSendPlayerExtendedOpcode(cid, opcodes.OPCODE_TV_CAM, "closeGraveando")
-	doSendMsg(cid, "You close your channel.")
+	doSendMsg(cid, "Você fechou seu canal.")
 	doResetPlayerTVSystem(cid)
 end
 

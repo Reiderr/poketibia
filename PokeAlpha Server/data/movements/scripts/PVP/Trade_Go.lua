@@ -1,8 +1,8 @@
 local s = {
 --[action id] = {pos de volta}
-[33694] = {id = 1}, -- cerulean
-[33693] = {id = 2}, -- viridian
-[33698] = {id = 3},
+[33694] = {id = 1}, -- saffron
+[33693] = {id = 2}, -- cerulean
+[33698] = {id = 3}, -- celadon
 [33699] = {id = 4}, -- Lavender
 [33695] = {id = 5}, -- vermillion
 [33696] = {id = 6}, -- fuchsia
@@ -16,7 +16,7 @@ if isSummon(cid) then
 return false
 end
 --
-local posi = {x=97, y=77, z=6} --posiçao do Trade Center...
+local posi = {x=198, y=853, z=6} --posiçao do Trade Center...
 local pos = s[item.actionid]
 local storage = 171877 
 --

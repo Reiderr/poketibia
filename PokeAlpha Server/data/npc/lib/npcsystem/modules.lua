@@ -1165,7 +1165,7 @@ if(Modules == nil) then
 		local parseInfo = {
 			[TAG_PLAYERNAME] = getPlayerName(cid),
 			[TAG_ITEMCOUNT] = amount,
-			[TAG_TOTALCOST] = totalCost/100,
+			[TAG_TOTALCOST] = totalCost,
 			[TAG_ITEMNAME] = shopItem.name
 		}
 
@@ -1237,7 +1237,7 @@ if(Modules == nil) then
 		local parseInfo = {
 			[TAG_PLAYERNAME] = getPlayerName(cid),
 			[TAG_ITEMCOUNT] = amount,
-			[TAG_TOTALCOST] = amount * shopItem.sell/100,
+			[TAG_TOTALCOST] = amount * shopItem.sell,
 			[TAG_ITEMNAME] = shopItem.name
 		}
 
@@ -1311,7 +1311,7 @@ if(Modules == nil) then
 		local parseInfo = {
 			[TAG_PLAYERNAME] = getPlayerName(cid),
 			[TAG_ITEMCOUNT] = module.amount,
-			[TAG_TOTALCOST] = parentParameters.cost * module.amount/100,
+			[TAG_TOTALCOST] = parentParameters.cost * module.amount,
 			[TAG_ITEMNAME] = parentParameters.realName
 		}
 
@@ -1368,7 +1368,7 @@ if(Modules == nil) then
 		local parseInfo = {
 			[TAG_PLAYERNAME] = getPlayerName(cid),
 			[TAG_ITEMCOUNT] = module.amount,
-			[TAG_TOTALCOST] = parentParameters.cost * module.amount/100,
+			[TAG_TOTALCOST] = parentParameters.cost * module.amount,
 			[TAG_ITEMNAME] = parentParameters.realName
 		}
 
@@ -1390,7 +1390,7 @@ if(Modules == nil) then
 		local parseInfo = {
 			[TAG_PLAYERNAME] = getPlayerName(cid),
 			[TAG_ITEMCOUNT] = module.amount,
-			[TAG_TOTALCOST] = parameters.cost * module.amount/100,
+			[TAG_TOTALCOST] = parameters.cost * module.amount,
 			[TAG_ITEMNAME] = parameters.realName
 		}
 

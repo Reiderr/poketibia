@@ -9,7 +9,7 @@ setPlayerStorageValue(cid, t.s, -1)
 doRegainSpeed(cid) 
 end 
 
-local t = {text='Mount, bike!', dtext='Demount, bike!', s=5700, speed = 700}
+local t = {text='Mount, bike!', dtext='Demount, bike!', s=5700, speed = 500}
 
 function onUse(cid, item, fromPosition, itemEx, toPosition)
 
@@ -27,15 +27,17 @@ end
 if getPlayerStorageValue(cid, t.s) <= 0 then
    doSendMagicEffect(pos, 177)
    doCreatureSay(cid, t.text, 19)
+   doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_RED, 'You have mounted in a bike.')
    BikeSpeedOn(cid, t)
    if getPlayerSex(cid) == 1 then
-      doSetCreatureOutfit(cid, {lookType = 2128, lookHead = getCreatureOutfit(cid).lookHead, lookBody = getCreatureOutfit(cid).lookBody, lookLegs = getCreatureOutfit(cid).lookLegs, lookFeet = getCreatureOutfit(cid).lookFeet}, -1)
+      doSetCreatureOutfit(cid, {lookType = 1394}, -1)
    else
-       doSetCreatureOutfit(cid, {lookType = 2127, lookHead = getCreatureOutfit(cid).lookHead, lookBody = getCreatureOutfit(cid).lookBody, lookLegs = getCreatureOutfit(cid).lookLegs, lookFeet = getCreatureOutfit(cid).lookFeet}, -1)
+       doSetCreatureOutfit(cid, {lookType = 1393}, -1)
    end
 else
    doSendMagicEffect(pos, 177)
    doCreatureSay(cid, t.dtext, 19)
+   doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_RED, 'You haven demouted of a bike.')
    BikeSpeedOff(cid, t)
    doRemoveCondition(cid, CONDITION_OUTFIT)
 end

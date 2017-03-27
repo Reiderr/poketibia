@@ -19,9 +19,9 @@ function onExtendedOpcode(cid, opcode, buffer)
 		if buffer == "refresh" then
 			doOTCSendPokemonHealth(cid)
 		end
-	 elseif opcode == op_crea.OPCODE_BATTLE_POKEMON then
-		 if buffer == "refresh" then
-		if #getCreatureSummons(cid) >= 1 then
+	elseif opcode == op_crea.OPCODE_BATTLE_POKEMON then
+		if buffer == "refresh" then
+			if #getCreatureSummons(cid) >= 1 then
 				doSendPlayerExtendedOpcode(cid, op_crea.OPCODE_BATTLE_POKEMON, tostring(getCreatureSummons(cid)[1]))
 			end
 		end
@@ -113,7 +113,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 						 doWatch(cid, playerToWatch)
 					  end
 					else
-					 doSendMsg(cid, "This player is not recording.")
+					 doSendMsg(cid, "Este player não está mais gravando.")
 				   end
 				   
 			elseif action == "watchWithPass" then
@@ -122,23 +122,23 @@ function onExtendedOpcode(cid, opcode, buffer)
 				   if isCreature(playerToWatch) then
 				      doWatch(cid, playerToWatch)
 				   else
-					 doSendMsg(cid, "This player is not recording.")
+					 doSendMsg(cid, "Este player não está mais gravando.")
 				   end
 				   
 			elseif action == "errou" then
-				     doSendMsg(cid, "Password incorrect.")
+				     doSendMsg(cid, "Senha do digitada incorreta.")
 			end
 			
 	elseif opcode == opcodes.OPCODE_PLAYER_SHOW_AUTOLOOT then -- Autoloot
 			if buffer:find("load/") then
 			  local itens = getAllItensAutoLoot()	
-			   doSendPlayerExtendedOpcode(cid, opcodes.OPCODE_PLAYER_SHOW_AUTOLOOT, (isCollectAll(cid) and "yes" or "no") .. "|" .. itens .. "|" .. getAllItensInMyListToClient(cid))
+			  doSendPlayerExtendedOpcode(cid, opcodes.OPCODE_PLAYER_SHOW_AUTOLOOT, (isCollectAll(cid) and "yes" or "no") .. "|" .. itens .. "|" .. getAllItensInMyListToClient(cid))
 			elseif buffer:find("all") then
 			    doCollectAll(cid, true)
-				doSendMsg(cid, "You have been activated autoloot.")
+				doSendMsg(cid, "AutoLoot: Coletar tudo foi ativado.")
 			elseif buffer:find("no") then
 			    doCollectAll(cid, false)
-				doSendMsg(cid, "You have been disabled autoloot.")
+				doSendMsg(cid, "AutoLoot: Coletar tudo foi desativado.")
 			else
 			  doSaveItems(cid, buffer)
 			end

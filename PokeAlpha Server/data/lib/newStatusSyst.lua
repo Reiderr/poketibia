@@ -59,21 +59,19 @@ local outFurys = {
 ["Elder Charizard"] = {outFury = 1073},  
 ["Shiny Blastoise"] = {outFury = 1074},   
 ["Ancient Blastoise"] = {outFury = 1074}, 
-["Entei"] = {outFury = 956}, 
-["Ditto"] = {outFury = null},     
+["Ditto"] = {outFury = null},   
 }
 
-local outImune  = {
-["Camouflage"] = {[643] = 2087},
-["Acid Armor"] = {[398] = 1453,[1283] = 1453},
-["Iron Defense"] = {[911] = 1401,[1892] = 2137},
-["Minimize"] = {[1457] = 1455},
-["Future Sight"] = {[889] = 1446,[530] = 52},
-["Predict"] = {[1537] = 1536},
-["Heal Bell"] = {[946] = 946},
+local outImune = {
+["Camouflage"] = 2087,
+["Acid Armor"] = 1453,
+["Iron Defense"] = 1401,
+["Minimize"] = 1455,
+["Future Sight"] = 1446,
+["Psychic Sight"] = 1536,
+["Heal Bell"] = 946,
 }
-
-        
+            
 local function transBack(cid)
 if isCreature(cid) then
    if getPlayerStorageValue(cid, 974848) >= 1 then
@@ -261,8 +259,7 @@ local stg = conds["Burn"]
 		   addPlayerDano(ret.im, player, dano)
 	    end
     
-   --  doCreatureAddHealth(cid, -dano, ret.eff, ret.color and ret.color or COLOR_BURN) --  EDITED
-	doCreatureAddHealth(cid, -dano, ret.eff, COLOR_RED)  
+    doCreatureAddHealth(cid, -dano, ret.eff, ret.color and ret.color or COLOR_BURN)  
     addEvent(doBurn2, 1500, cid, -1, a, damage)   
 end 
 
@@ -569,21 +566,21 @@ local stg = conds["Leech"]
 			   doRemoveCountPokemon(getCreatureMaster(cid))
 	        end
 		end
-		doSendAnimatedText(getThingPos(cid), "-"..damage.."", 180)
-		doSendAnimatedText(getThingPos(attacker), "+"..damage.."", 71)
+		doSendAnimatedText(getThingPos(cid), "-"..damage.."", 144)
+		doSendAnimatedText(getThingPos(attacker), "+"..damage.."", 32)
 		doKillWildPoke(attacker, cid)
 		return false
 	end
     ------
     doCreatureAddHealth(cid, -damage)
-    doSendAnimatedText(getThingPos(cid), "-"..damage.."", 180)
+    doSendAnimatedText(getThingPos(cid), "-"..damage.."", 144)
     doSendMagicEffect(getThingPos(cid), 45)
     ------
     local newlife = life - getCreatureHealth(cid)
     if newlife >= 1 and attacker ~= 0 then
        doSendMagicEffect(getThingPos(attacker), 14)
        doCreatureAddHealth(attacker, newlife)
-       doSendAnimatedText(getThingPos(attacker), "+"..newlife.."", 71)
+       doSendAnimatedText(getThingPos(attacker), "+"..newlife.."", 32)
 	   local dano = getCreatureHealth(cid)-damage <= 0 and getCreatureHealth(cid)-1 or damage 
 		if isSummon(attacker) then -- morrer para veneno
 		  local player = getCreatureMaster(attacker)
@@ -628,10 +625,9 @@ local stg = conds[atributo]
     end
 	
     if a <= -1 then               --alterado v1.6
-    if isInArray({"Predict", "Heal Bell", "Future Sight", "Camouflage", "Acid Armor", "Iron Defense", "Minimize", "Bug Fighter", "Ancient Fury"}, buff) then
+    if isInArray({"Psychic Sight", "Heal Bell", "Future Sight", "Camouflage", "Acid Armor", "Iron Defense", "Minimize", "Bug Fighter", "Ancient Fury"}, buff) then
        if not isSleeping(cid) then
-          doRemoveCondition(cid, CONDITION_OUTFIT)	
- 
+          doRemoveCondition(cid, CONDITION_OUTFIT)
        end
        setPlayerStorageValue(cid, 9658783, -1)
        setPlayerStorageValue(cid, 625877, -1) --alterado v1.6 
@@ -679,11 +675,10 @@ local stg = conds[atributo]
        doRaiseStatus(cid, 1.5, 0, 0, a)    --atk melee    --alterado v1.6
        setPlayerStorageValue(cid, 374896, 1)  --velo atk 
        addEvent(setPlayerStorageValue, a*1000, cid, 465987, -1)                                              
-	elseif isInArray({"Predict", "Heal Bell", "Future Sight", "Camouflage", "Acid Armor", "Iron Defense", "Minimize"}, buff) then
-	   doSetCreatureOutfit(cid, {lookType = outImune[buff][getCreatureOutfit(cid).lookType]}, -1)
+    elseif isInArray({"Psychic Sight", "Heal Bell", "Future Sight", "Camouflage", "Acid Armor", "Iron Defense", "Minimize"}, buff) then
+       doSetCreatureOutfit(cid, {lookType = outImune[buff]}, -1)
        setPlayerStorageValue(cid, 9658783, 1)  
-       setPlayerStorageValue(cid, 625877, outImune[buff]) 
-                      
+       setPlayerStorageValue(cid, 625877, outImune[buff]) --alterado v1.6                             
     elseif buff == "Bug Fighter" then
        setPlayerStorageValue(cid, 374896, 1)  --velo atk  --alterado v1.6
        doRaiseStatus(cid, 1.5, 1.5, 100, a)
@@ -848,9 +843,7 @@ end
 -----------------------------------
 function doMoveInArea2(cid, eff, area, element, min, max, spell, ret)
 if not isCreature(cid) then return true end
-   if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
+   
    local pos = getPosfromArea(cid, area)  --alterado v1.8
    setPlayerStorageValue(cid, 21101, -1) 
    
@@ -923,9 +916,6 @@ end
 end
 -------------------------------------------
 function doMoveDano2(cid, pid, element, min, max, ret, spell)
-if tostring(getPlayerStorageValue(cid, 21102)) ~= spell then
-    setPlayerStorageValue(cid, 21102, spell)
-end
 if isCreature(pid) and isCreature(cid) and cid ~= pid then
    if isNpcSummon(pid) and getCreatureTarget(pid) ~= cid then
       return true                             --alterado v1.6

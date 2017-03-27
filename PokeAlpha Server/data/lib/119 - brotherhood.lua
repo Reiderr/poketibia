@@ -17,7 +17,7 @@ brotherhoodConf = {
                                    },
 			["Expert"] = {
 				    posis = {
-					    [1] = {1036, 1040, 7, desc = "Esta em algum lugar ao sul daqui."},
+					    [1] = {1011, 1066, 7, desc = "Esta em algum lugar ao sul daqui."},
 					    }
                                    },
 			["Lendario"] = {

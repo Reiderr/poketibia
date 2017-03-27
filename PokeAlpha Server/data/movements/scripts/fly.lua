@@ -125,7 +125,7 @@ local function doSendMagicEffecte(pos, effect)
 end
 function onStepOut(cid, item, position, lastPosition, fromPosition, toPosition, actor)
 
-     if isInArray({460, 11675, 11676, 16541, 16542, 16543, 16544, 16545, 16546, 16547, 16548, 16549, 16550, 16551, 16552}, item.itemid) then
+     if isInArray({460, 11675, 11676}, item.itemid) then
         doRemoveItem(item.uid)
      end
      

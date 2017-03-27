@@ -3,8 +3,8 @@ useOTClient = true  -- coloque false caso n for usar o OTClient!!!  --alterado v
 useKpdoDlls = true -- coloque true pra usar as barras de cooldown.
 intervalToRegrowBushAndStones = 15 -- this also affects dig (in seconds) / isso afeta dig também (em segundos)
 nurseHealsOnlyInPZ = true -- true = precisa estar em pz pra falar com a nurse
-accountManagerOutfit = {lookType = 511, lookHead = 1, lookBody = 1, lookLegs = 1, lookFeet = 1}
-accountManagerRandomPokemonOutfit = false -- se true, quando o acc manager logar, vai ter uma outfit de pokemon aleatoria
+accountManagerOutfit = {lookType = 304, lookHead = 1, lookBody = 1, lookLegs = 1, lookFeet = 1}
+accountManagerRandomPokemonOutfit = true -- se true, quando o acc manager logar, vai ter uma outfit de pokemon aleatoria
 reloadHighscoresWhenUsingPc = true -- talvez dê lag, lembrando que tem uma opção no config.lua que indica o intervalo do update das highscores
 backupPos = {x = 4, y = 3, z = 10} -- alguma pos para criar monstros quando tentar sair do fly/ride/surf em lugares que não são muito espaçosos
 nurseHealsPokemonOut = true
@@ -58,8 +58,8 @@ specialabilities = {
 ["dig"] = {"Shiny Magcargo", "Shiny Lanturn", "Poliwrath", "Miltank", "Shiny Sandslash", "Shiny Dodrio", "Shiny Umbreon", "Shiny Espeon", "Shiny Ninetales", "Shiny Rhydon", "Raticate", "Sandshrew", "Sandslash", "Diglett", "Dugtrio", "Primeape", "Machop", "Machoke", "Machamp", "Geodude", "Graveler", "Golem" , "Onix", "Cubone", "Marowak", "Rhyhorn", "Rhydon", "Kangaskhan", "Tauros", "Snorlax", "Eevee", "Flareon", "Jolteon", "Vaporeon", "Vulpix", "Ninetales", "Nidorina", "Nidoqueen", "Nidorino", "Nidoking", "Persian", "Arcanine", "Shiny Raticate", "Shiny Golem" , "Shiny Onix", "Shiny Cubone", "Shiny Marowak", "Shiny Snorlax", "Shiny Flareon", "Shiny Jolteon", "Shiny Vaporeon", "Shiny Nidoking", "Shiny Arcanine", "Typhlosion", "Feraligatr", "Furret", "Espeon", "Umbreon", "Ledian", "Sudowoodo", "Politoed", "Quagsire", "Gligar", "Steelix", "Snubbull", "Granbull", "Heracross", "Dunsparce", "Sneasel", "Teddiursa", "Ursaring", "Piloswine", "Hitmontop", "Larvitar", "Pupitar", "Tyranitar"},
 ["blink"] = {"Shiny Xatu", "Exeggutor", "Shiny Abra", "Shiny Espeon", "Shiny Mr. Mime", "Jynx", "Shiny Jynx", "Hypno", "Shiny Hypno", "Slowking", "Natu", "Xatu", "Espeon", "Mew", "Mewtwo", "Abra", "Kadabra", "Alakazam", "Porygon", "Shiny Abra", "Shiny Alakazam", "Porygon2", "Mr. Mime"},
 ["teleport"] = {"Shiny Xatu", "Jynx", "Shiny Jynx", "Slowking", "Slowbro", "Exeggutor", "Shiny Mr. Mime", 'Mew', 'Mewtwo', 'Abra', 'Kadabra', 'Alakazam', 'Drowzee', 'Hypno', 'Mr. Mime', 'Porygon', 'Shiny Abra', 'Shiny Alakazam', 'Shiny Hypno', 'Porygon2'},
-["fly"] = {"Flygon", "Swellow", "Altaria", "Venomoth", "Shiny Crobat", "Tropius", "Noctowl", "Dragonair", "Shiny Dragonair", "Porygon", "Aerodactyl", "Salamence", "Shiny Salamence", "Dragonite", "Charizard", "Pidgeot", "Fearow", "Zapdos", "Moltres", "Articuno", "Mew", "Mewtwo", "Shiny Dragonite", "Shiny Charizard", "Shiny Pidgeot", "Shiny Fearow", "Porygon2", "Skarmory", "Crobat", "Scyther", "Shiny Scyther", "Shiny Venomoth", "Gengar", "Shiny Gengar", "Heracross", "Farfetch'd", "Shiny Farfetch'd", "Xatu"},
-["ride"] = {"Absol", "Manectric", "Shiny Meganium", "Girafarig", "Shiny Dodrio", "Absol", "Metagross", "Shiny Ninetales", "Shiny Onix", "Venusaur", "Ninetales", "Arcanine", "Ponyta", "Rapidash", "Doduo", "Dodrio", "Onix", "Rhyhorn", "Tauros", "Shiny Venusaur", "Shiny Arcanine", "Steelix", "Houndoom", "Meganium", "Bayleef", "Stantler", "Mareep", "Piloswine", "Shiny Stantler", "Shiny Tauros"},
+["fly"] = {"Flygon", "Swellow", "Altaria", "Shiny Stantler","Venomoth", "Shiny Crobat", "Tropius", "Noctowl", "Dragonair", "Shiny Dragonair", "Porygon", "Aerodactyl", "Salamence", "Shiny Salamence", "Dragonite", "Charizard", "Pidgeot", "Fearow", "Zapdos", "Moltres", "Articuno", "Mew", "Mewtwo", "Shiny Dragonite", "Shiny Charizard", "Shiny Pidgeot", "Shiny Fearow", "Porygon2", "Skarmory", "Crobat", "Scyther", "Shiny Scyther", "Shiny Venomoth", "Gengar", "Shiny Gengar", "Heracross", "Farfetch'd", "Shiny Farfetch'd", "Xatu"},
+["ride"] = {"Absol", "Manectric", "Shiny Meganium", "Girafarig", "Shiny Dodrio", "Absol", "Metagross", "Shiny Ninetales", "Shiny Onix", "Venusaur", "Ninetales", "Arcanine", "Ponyta", "Rapidash", "Doduo", "Dodrio", "Onix", "Rhyhorn", "Tauros", "Shiny Venusaur", "Shiny Arcanine", "Steelix", "Houndoom", "Meganium", "Bayleef", "Stantler", "Mareep", "Piloswine"},
 ["surf"] = {"Swampert", "Sealeo", "Walrein","Crawdaunt", "Lombre", "Ludicolo", 'Poliwag', 'Poliwhirl', 'Seaking', 'Milotic', 'Dewgong', 'Wailord', 'Blastoise', 'Tentacruel', 'Lapras', 'Gyarados', 'Omastar', 'Kabutops', 'Vaporeon', 'Staryu', 'Starmie', 'Goldeen', 'Seadra', 'Golduck', 'Squirtle', 'Wartortle', 'Tentacool', 'Snorlax', 'Poliwrath', 'Shiny Blastoise', 'Shiny Tentacruel', 'Shiny Gyarados', 'Shiny Vaporeon', 'Shiny Seadra', 'Shiny Tentacool', 'Shiny Snorlax', "Mantine", "Totodile", "Croconow", "Feraligatr", "Marill", "Azumarill", "Quagsire", "Wooper", "Octillery", "Kingdra"},
 ["foresight"] = {"Machamp", "Shiny Hitmonchan", "Shiny Hitmonlee", "Shiny Hitmontop", "Hitmontop", "Hitmonlee", "Hitmonchan"},
 ["counter"] = {"Shiny Magcargo", "Shiny Lanturn", "Shiny Magmar", "Shiny Magmortar", "Shiny Electivire", "Machamp", "Machoke", "Hitmonchan", "Hitmonlee", "Magmar", "Electabuzz", "Scyther", "Snorlax", "Kangaskhan", "Arcanine", "Shiny Arcanine", "Shiny Snorlax", "Shiny Scyther", "Shiny Hitmonchan", "Shiny Hitmonlee", "Shiny Electabuzz", "Hitmontop", "Shiny Hitmontop"}, 
@@ -73,90 +73,89 @@ specialabilities = {
 }              --alterado v1.9 /\  novos shinys da pxg adicionados em algumas tabelas..
 
 flys = {
- -- +1000 VELOCIDAD LEGENDARIA -- 
-["Moltres"] = {229, 1300},
-["Articuno"] = {230, 1300},
-["Zapdos"] = {224, 1300},
-["Mew"] = {232, 1300},
-["Mewtwo"] = {233, 1300},
+["Moltres"] = {229, 3000}, -- moltres
+["Articuno"] = {230, 3000}, -- artic
+["Zapdos"] = {224, 3000}, -- zapdos
+["Mew"] = {232, 3000}, -- 1000
+["Mewtwo"] = {233, 3000},-- two
+["Dragonite"] = {221, 2500},-- nite
+["Salamence"] = {1274, 3074},-- nite
+["Shiny Salamence"] = {1301, 3501},-- nite
+["Pidgeot"] = {222, 1800}, -- geot
+["Fearow"] = {226, 1500}, -- fearow
+["Aerodactyl"] = {227, 2000}, -- aero
+["Charizard"] = {216, 1800}, -- chari
+["Porygon"] = {316, 1200}, -- porygon
+["Shiny Pidgeot"] = {996, 3000}, -- Shiny geot
+["Shiny Fearow"] = {997, 3000}, -- Shiny fearow          --alterado v1.5
+["Shiny Charizard"] = {295, 3000}, -- Shiny chari
+["Shiny Crobat"] = {1149, 3000},
+["Porygon2"] = {648, 1500}, -- 2
+["Skarmory"] = {649, 1800}, -- skarmory
+["Crobat"] = {652, 2200}, -- crobat
+["Farfetch'd"] = {1733, 2000},
+["Shiny Farfetch'd"] = {1121, 3000},
+["Shiny Stantler"] = {1229, 3000}, -- 
 
- -- +600 VELOCIDAD SHINY -- 
-["Shiny Salamence"] = {1301, 850},
-["Shiny Crobat"] = {1149, 800},
-["Shiny Charizard"] = {295, 800},
-["Shiny Pidgeot"] = {996, 800},
-["Shiny Gengar"] = {1124, 800},
-["Aerodactyl"] = {227, 800},
-["Shiny Dragonair"] = {1113, 800},
-["Salamence"] = {1274, 800},
-["Shiny Scyther"] = {1161, 800},
-["Shiny Venomoth"] = {893, 800},
-["Shiny Farfetch'd"] = {1121, 800},
-["Shiny Raichu"] = {1731, 750},
+["Raichu"] = {1732, 1800},
+["Shiny Raichu"] = {1731, 2500},
 
- -- +500 VELOCIDAD MEDIA --
-["Xatu"] = {1122, 500},
-["Dragonite"] = {221, 500},
-["Pidgeot"] = {222, 500},
-["Charizard"] = {216, 500},
-["Porygon2"] = {648, 500},
-["Skarmory"] = {649, 500},
-["Crobat"] = {652, 500},
-["Gengar"] = {1123, 500},
-["Raichu"] = {1732, 500},
-["Shiny Fearow"] = {997, 50},       
-["Heracross"] = {1125, 500},
-["Scyther"] = {1162, 50},
-["Altaria"] = {1406, 500},
-["Tropius"] = {1471, 500},
-["Flygon"] = {1473, 500}, 
-["Swellow"] = {1497, 500},
+["Heracross"] = {1125, 1800},
 
- -- +400 VELOCIDAD BAJA --
- ["Dragonair"] = {1112, 400},
-["Noctowl"] = {994, 400},
-["Venomoth"] = {1233, 400},
-["Fearow"] = {226, 400},
-["Porygon"] = {316, 400},
-["Farfetch'd"] = {1733, 400},
+["Scyther"] = {1162, 1800},
+["Shiny Scyther"] = {1161, 3000},
+["Shiny Venomoth"] = {893, 3000},
+
+["Dragonair"] = {1112, 1800},
+["Shiny Dragonair"] = {1113, 3000},
+["Noctowl"] = {994, 1200},
+
+["Venomoth"] = {1233, 1800},
+
+["Shiny Gengar"] = {1124, 3000},
+["Gengar"] = {1123, 1500},
+["Xatu"] = {1122, 1500},
+
+--- 3 geracao
+["Altaria"] = {1406, 1406},
+["Tropius"] = {1471, 3000}, -- 
+["Flygon"] = {1473, 3000}, -- 
+["Swellow"] = {1497, 3000}, -- 
 
 }
 
 rides = {
- -- +700~680 VELOCIDAD ALTA --
-["Shiny Tauros"] = {1181, 200},
-["Shiny Ninetales"] = {1136, 200},
-["Shiny Dodrio"] = {1145, 250},
-["Shiny Arcanine"] = {1003, 240},
-["Rapidash"] = {130, 240},
+["Tauros"] = {128, 110}, -- tauros
+["Ninetales"] = {129, 130}, -- kyuubi
+["Rapidash"] = {130, 150}, -- rapid
+["Ponyta"] = {131, 100}, -- ponyta
+["Rhyhorn"] = {132, 100}, -- rhyhorn
+["Arcanine"] = {12, 200}, -- arcan
+["Onix"] = {126, 110}, -- onix
+["Venusaur"] = {134, 120}, -- venu
+["Dodrio"] = {133, 150}, -- dodrio
+["Doduo"] = {135, 100}, -- doduo
+["Shiny Arcanine"] = {1003, 250}, -- arcan
+["Shiny Onix"] = {1737, 200}, -- onix             --alterado v1.5
+["Shiny Venusaur"] = {1040, 180}, -- venu
+["Steelix"] = {646, 180}, -- steelix
+["Meganium"] = {685, 120}, -- meganium
+["Bayleef"] = {686, 80}, -- bayleef
+["Stantler"] = {687, 120}, -- stantler
+["Houndoom"] = {647, 200}, -- houndoom
+["Piloswine"] = {689, 130}, -- piloswine
+["Mareep"] = {688, 80}, -- marip
+["Metagross"] = {1266, 150}, -- Metagross
 
- -- +620~600 VELOCIDAD MEDIA --
-["Shiny Meganium"] = {1178, 150},
-["Ninetales"] = {129, 150},
-["Arcanine"] = {12, 150},
-["Houndoom"] = {647, 140},
-["Girafarig"] = {1227, 130},
-["Tauros"] = {128, 130},
-["Manectric"] = {1467, 130},
-["Absol"] = {1468, 130},
+["Shiny Ninetales"] = {1136, 200}, -- Shiny Ninetales  --alterado v1.9 \/
+["Shiny Dodrio"] = {1145, 220}, -- shiny dodrio
+["Shiny Tauros"] = {1181, 190}, -- shiny tauros
+["Shiny Meganium"] = {1178, 180}, -- shiny meganium
+["Girafarig"] = {1227, 180}, -- 
 
- -- +550~(A INFERIOR) VELOCIDAD BAJA --
-["Shiny Onix"] = {1737, 130},
-["Dodrio"] = {133, 110}, 
-["Shiny Venusaur"] = {1040, 110},
-["Venusaur"] = {134, 100},
-["Ponyta"] = {131, 1100}, 
-["Doduo"] = {135, 100}, 
-["Onix"] = {126, 90}, 
-["Rhyhorn"] = {132, 70},
-["Bayleef"] = {686, 70},
-["Meganium"] = {685, 100},
-["Mareep"] = {688, 70}, 
-["Steelix"] = {646, 110},
-["Piloswine"] = {689, 130}, 
-["Shiny Stantler"] = {1229, 170},
-["Stantler"] = {687, 150}, 
-["Metagross"] = {1266, 100}, 
+["Absol"] = {1468, 170}, -- 
+["Manectric"] = {1467, 170}, -- 
+
 }
 
 surfs = {
@@ -240,7 +239,7 @@ pokeballs = {
 ["shinytinker"] =      {effect = 349, on = 16215, use = 16253, off = 16230, all = {16215, 16253, 16230}},
 
 ["poke"] =      {effect = 188, on = 11826, use = 11827, off = 11828, all = {11826, 11827, 11828}},
-["ultra"] =       {effect = 191, on = 11829, use = 11830, off = 11831, all = {11829, 11830, 11831}},
+["ultra"] =       {effect = 188, on = 11829, use = 11830, off = 11831, all = {11829, 11830, 11831}},
 ["super"] =       {effect = 190, on = 11835, use = 11836, off = 11837, all = {11835, 11836, 11837}},
 ["great"] =       {effect = 189, on = 11832, use = 11833, off = 11834, all = {11832, 11833, 11834}},
 ["saffari"] =     {effect = 195, on = 10975, use = 10976, off = 10977, all = {10975, 10976, 10977}},    --alterado v1.9
@@ -325,7 +324,7 @@ pokeballs = {
 ["goldeen"] =      {effect = 188, on = 13065, use = 13066, off = 13067, all = {13065, 13066, 13067}},
 ["golduck"] =      {effect = 188, on = 13068, use = 13069, off = 13070, all = {13068, 13069, 13070}},
 ["golem"] =      {effect = 188, on = 13071, use = 13072, off = 13073, all = {13071, 13072, 13073}},
-["shiny golbat"] =      {effect = 188, on = 13611, use = 13612, off = 13613, all = {13611, 13612, 13613}},
+["golbat"] =      {effect = 188, on = 13623, use = 13624, off = 13625, all = {13623, 13624, 13625}},
 ["granbull"] =      {effect = 188, on = 13074, use = 13075, off = 13076, all = {13074, 13075, 13076}},
 ["graveler"] =      {effect = 188, on = 13077, use = 13078, off = 13079, all = {13077, 13078, 13079}},
 ["grimer"] =      {effect = 188, on = 13080, use = 13081, off = 13082, all = {13080, 13081, 13082}},
@@ -596,16 +595,16 @@ pokeballs = {
 ["kakuna"] =      {effect = 188, on = 13902, use = 13903, off = 13904, all = {13902, 13903, 13904}},
 
 ["shiny magcargo"] =      {effect = 188, on = 13919, use = 13920, off = 13921, all = {13919, 13920, 13921}},
-["shiny lanturn"] =      {effect = 188, on = 13922, use = 13923, off = 13924, all = {13922, 13923, 13924}},
+["shiny Lanturn"] =      {effect = 188, on = 13922, use = 13923, off = 13924, all = {13922, 13923, 13924}},
 
-["shiny weezing"] =      {effect = 188, on = 13925, use = 13926, off = 13927, all = {13925, 13926, 13927}},
-["shiny sandslash"] =      {effect = 188, on = 13928, use = 13929, off = 13930, all = {13928, 13929, 13930}},
+["shiny Weezing"] =      {effect = 188, on = 13925, use = 13926, off = 13927, all = {13925, 13926, 13927}},
+["shiny Sandslash"] =      {effect = 188, on = 13928, use = 13929, off = 13930, all = {13928, 13929, 13930}},
 
 
 -- nao temos["Wailord"] =      {effect = 188, on = 14173, use = 14174, off = 14175, all = {14173, 14174, 14175}},
 
-["treecko"] =      {effect = 188, on = 14881, use = 14882, off = 14883, all = {14881, 14882, 14883}},
-["grovyle"] =      {effect = 188, on = 14884, use = 14885, off = 14886, all = {14884, 14885, 14886}},
+["treecko"] =      {effect = 188, on = 14881, use = 14883, off = 14883, all = {14881, 14883}},
+["grovyle"] =      {effect = 188, on = 14884, use = 14886, off = 14886, all = {14884, 14886}},
 ["sceptile"] =      {effect = 188, on = 14887, use = 14889, off = 14889, all = {14887, 14889}},
 
 ["torchic"] =      {effect = 188, on = 14890, use = 14892, off = 14892, all = {14890, 14892}},
@@ -736,7 +735,7 @@ effectiveness = {
 [WATERDAMAGE] = {super = {"rock", "ground", "fire"}, weak = {"water", "grass", "dragon"}},
 [NORMALDAMAGE] = {weak = {"rock", "steel"}, non = {"ghost"}},
 [FIGHTDAMAGE] = {super = {"normal", "rock", "steel", "ice", "dark"}, weak = {"flying", "poison", "bug", "psychic"}, non = {"ghost"}},
-[FLYINGDAMAGE] = {super = {"fighting", "bug", "grass"}, weak = {"rock", "steel", "electric"}, non = {"ground"}},
+[FLYINGDAMAGE] = {super = {"fighting", "bug", "grass"}, weak = {"rock", "steel", "electric"}},
 [POISONDAMAGE] = {super = {"grass"}, weak = {"poison", "ground", "rock", "ghost"}, non = {"steel"}},
 [POISONEDDAMAGE] = {super = {"grass"}, weak = {"poison", "ground", "rock", "ghost"}, non = {"steel"}},
 [GROUNDDAMAGE] = {super = {"poison", "rock", "steel", "fire", "electric"}, weak = {"bug", "grass"}, non = {"flying"}},
@@ -1019,8 +1018,6 @@ fotos = {
 ["Shiny Dratini"] = 11283,
 ["Shiny Dragonair"] = 11284,
 ["Shiny Dragonite"] = 11285,
-["Shiny Sandslash"] = 12689,
-["Shiny Weezing"] = 12688,
 -----------------geracao 2 Portfoil------------
 
 ["Chikorita"] = 11288,
@@ -1145,8 +1142,7 @@ fotos = {
 
 ["Magmortar"] = 14182,
 ["Shiny Magmortar"] = 14183,
-["Shiny Sandslash"] = 12689,
-["Shiny Electivire"] = 13936,
+["Shiny Electivire"] = 14184,
 
 
 ["Shiny Ampharos"] = 12836,
@@ -1950,7 +1946,7 @@ newpokedex = {
 ["Metang"] = {gender = 500, level = 80, storage = 16000, stoCatch = 5015},
 ["Metagross"] = {gender = 500, level = 150, storage = 16000, stoCatch = 5016},
 
-["Aggron"] = {gender = 500, level = 150, storage = 16000, stoCatch = 5018},
+["Aggron"] = {gender = 500, level = 150, storage = 16000, stoCatch = 5017},
 }
 
 oldpokedex = {
@@ -2106,8 +2102,6 @@ oldpokedex = {
 {"Dragonite", 100, 1149},
 {"Mewtwo", 100, 1150},
 {"Mew", 100, 1151},
-{"Duskull", 100, 1152},
-{"Aggron", 100, 14481},
 -------------------old Shiny---------
 
 {"Shiny Venusaur", 100, 10030},
@@ -2167,8 +2161,6 @@ oldpokedex = {
 {"Shiny Dragonair", 100, 11480},
 {"Shiny Dragonite", 150, 11490},
 {"Milotic", 140, 11300},
-{"Altaria", 100, 11300},
-
 ---------------old johto-----------
 {"Chikorita", 20, 1152},
 {"Bayleef", 40, 1153},
@@ -2314,133 +2306,7 @@ oldpokedex = {
 {"Beldum", 25, 1103},
 {"Metang", 80, 1103},
 {"Metagross", 150, 1103},
-{"glalie", 80, 1104},
-{"Sceptile", 80, 1105},
-{"swellow", 85, 1106},
-
-{"Lance Aerodactyl", 150, 1142},
-{"Lance Dragonair", 150, 1148},
-{"Lance Dragonite", 150, 1149},
-{"Lance Charizard", 150, 1006},
-{"Lance Shiny Dragonair", 150, 11480},
-{"Clan Blastoise", 150, 1009},
-{"Clan Tentacruel", 150, 1073},
-{"Clan Jynx", 150, 1124},
-{"Clan Gyarados", 150, 1130},
-{"Clan Lapras", 150, 1131},
-{"Clan Omastar", 150, 1139},
-{"Clan Kabutops", 150, 1141},
-{"Clan Shiny Blastoise", 150, 10090},
-{"Clan Shiny Tentacruel", 150, 10730},
-{"Clan Shiny Seadra", 150, 11170},
-{"Clan Shiny Jynx", 150, 11240},
-{"Clan Shiny Gyarados", 150, 11300},
-{"Clan Shiny Vaporeon", 150, 11340},
-{"Brave Nidoking", 150, 1034},
-{"Rage Nidoqueen", 150, 1031},
-{"Acid Muk", 150, 1089},
-{"Poison Arbok", 150, 1024},
-{"Ghost Gengar", 150, 1094},
-{"Flying Golbat", 150, 1042},
-{"Dark Abra", 120, 10630},
-{"Ancient Gengar", 150, 10940},
-{"Brave Venusaur", 150, 1003},
-{"Ancient Meganium", 150, 1154},
-{"Furios Scyther", 150, 1123},
-{"Sunny Sunflora", 150, 1192},
-{"Ancient Venusaur", 150, 10030},
-{"Slicer Scizor", 150, 1212},
-{"Ancient Parasect", 150, 10470},
-{"Brave Charizard", 150, 1006},
-{"Flame Typhlosion", 150, 1157},
-{"Wardog Arcanine", 150, 1059},
-{"Lava Magmar", 150, 1126},
-{"Ancient Arcanine", 150, 10590},
-{"Elder Charizard", 150, 10060},
-{"Dark Houndoom", 150, 1229},
-{"Brave Fearow", 150, 1022},
-{"Aviator Pidgeot", 150, 1018},
-{"Iron Skarmory", 150, 1227},
-{"Owl Noctowl", 150, 1164},
-{"Fury Dragonair", 150, 1148},
-{"Ancient Dragonite", 150, 1149},
-{"Ancient Dragonair", 150, 11480},
-{"Elder Pidgeot", 150, 10180},
-{"Hard Golem", 150, 1076},
-{"Brute Rhydon", 150, 1112},
-{"Sand Sandslash", 150, 1028},
-{"Earth Donphan", 150, 1232},
-{"Ancient Onix", 150, 10950},
-{"Elder Tyranitar", 150, 1248},
-{"Ancient Steelix", 150, 1208},
-{"Kicker Hitmonlee", 150, 1106},
-{"Puncher Hitmonchan", 150, 1107},
-{"UFC Machamp", 150, 1068},
-{"Fat Snorlax", 150, 1143},
-{"Ancient Ursaring", 150, 1217},
-{"Milk Miltank", 150, 1241},
-{"Rolling Hitmontop", 150, 1237},
-{"Ash Snorlax", 150, 1143},
-{"Ash Pikachu", 150, 1025},
-{"Ash Charizard", 150, 1006},
-{"Ash Pidgeot", 150, 10180},
-{"Ash Venusaur", 150, 10030},
-{"Ash Blastoise", 150, 1009},
-{"Bruno Hitmontop", 150, 11520},
-{"Bruno Hitmonlee", 150, 11060},
-{"Bruno Hitmonchan", 150, 11070},
-{"Bruno Onix", 150, 10950},
-{"Bruno Machamp", 150, 1068},
-{"Agata Gengar", 150, 10940},
-{"Agata Misdreavus", 150, 1200},
-{"Agata Abra", 150, 10630},
-{"Agata Houndoom", 150, 1229},
-{"Agata Umbreon", 150, 1197},
-{"Agata Murkrow", 150, 1198},
-{"Lorelei Lapras", 150, 1131},
-{"Lorelei Dewgong", 150, 1087},
-{"Lorelei Piloswine", 150, 1221},
-{"Lorelei Delibird", 150, 1225},
-{"Lorelei Cloyster", 150, 1091},
-{"Lorelei Jynx", 150, 11240},
-{"Lance Gyarados", 150, 11300},
-{"Brave Blastoise", 150, 1009},
-{"Ancient Blastoise", 150, 10090},
-{"Red Gyarados", 150, 11300},
-{"Rage Gyarados", 150, 1130}, 
-{"Ancient Jynx", 150, 11240},
-{"Frost Jynx", 150, 1124},
-{"Icy Dewgong", 150, 1087},
-{"Stupid Feraligatr", 150, 1160},
-{"Clamped Cloyster", 150, 1091},
-{"Surfing Mantine", 150, 1226},
-{"Spark Electrode", 150, 1101},
-{"Brave Electabuzz", 150, 1125},
-{"Ancient Ampharos", 150, 1181},
-{"Charged Raichu", 150, 1026},
-{"Ancient Raichu", 150, 10260},
-{"Ancient Electabuzz", 150, 11250},
-{"Brave Hypno", 150, 1097},
-{"Psyco Alakazam", 150, 1065},
-{"Ancient Alakazam", 150, 10650},
-{"Mime", 150, 1122},
-{"Ancient Mime", 150, 1122},
-{"Reflector Wobbuffet", 150, 1202},
-{"Hell's Zard", 350, 1006},
-{"Super Rhydon", 350, 1112},
-{"Sauron", 350, 1003},
-{"Controler-Alakazam", 350, 1065},
-{"Wowofet", 350, 1202},
-{"Miseador-Weezing", 350, 1110},
-{"Storm Gengar", 350, 10940},
-{"Rare Magikarp", 350, 11290},
 {"Shiny Politoed", 100, 11860},
-{"Seviper", 85, 11862},
-{"Mega Charizard y", 100, 11863},
-{"Mega Charizard x", 100, 11864},
-{"Dark Mega Charizard", 100, 11865},
-{"Mega Aerodactyl", 100, 11866},
-{"Demon", 100, 1006},
 }
 
 poevo = {
@@ -2733,10 +2599,6 @@ local name = doCorrectString(getCreatureName(cid))
 if passivesChances["Counter Helix"][doCorrectString(getCreatureName(cid))] and math.random(1, 100) <= passivesChances["Counter Helix"][doCorrectString(getCreatureName(cid))] then
    docastspell(cid, "Counter Helix")
 end
--------------------------------------------Groundshock------------------------------------
-if passivesChances["Groundshock"][doCorrectString(getCreatureName(cid))] and math.random(1, 100) <= passivesChances["Groundshock"][doCorrectString(getCreatureName(cid))] then
-   docastspell(cid, "Groundshock")
-end
 -------------------------------------------Lava Counter/Electricity----------------------------
 if passivesChances["Lava-Counter"][doCorrectString(getCreatureName(cid))] and math.random(1, 100) <= passivesChances["Lava-Counter"][doCorrectString(getCreatureName(cid))] then
    docastspell(cid, "Lava-Counter")
@@ -2781,11 +2643,6 @@ end
 if passivesChances["Mirror Coat"][doCorrectString(getCreatureName(cid))] and math.random(1, 100) <= passivesChances["Mirror Coat"][doCorrectString(getCreatureName(cid))] then   
    docastspell(cid, "Mirror Coat", 0, 0)
 end
-
-if passivesChances["Lifesteal"][doCorrectString(getCreatureName(cid))] and math.random(1, 100) <= passivesChances["Lifesteal"][doCorrectString(getCreatureName(cid))] then   
-   docastspell(cid, "Lifesteal", 0, 0)
-end
-
 --------------------------------- Illusion -----------------------------------------
 return false
 end
@@ -2799,10 +2656,7 @@ passivesChances = {
                ["Shiny Hitmontop"] = 22,
                ["Pineco"] = 10,
                ["Forretress"] = 15,
-             },
-["Groundshock"] = { 
-               ["Kangaskhan"] = 8,
-               ["Mega Kangaskhan"] = 13,
+               ["Kangaskhan"] = 18,
              },
 ["Lava-Counter"] = {
                        ["Magmar"] = 18,
@@ -2938,9 +2792,6 @@ passivesChances = {
                 ["Beedrill"] = 20,
                 ["Shiny Beedrill"] = 28,
 				["Mega Scizor"] = 100,
-             },
-["Lifesteal"] = {
-				["Shiny Crobat"] = 20,
              },
 }
 

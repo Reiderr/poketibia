@@ -49,7 +49,6 @@ if item2.uid == cid then
    if isFight(cid) then  -- Edi√ß√£o pra ficar igual pxg.. nao dar fly ou ride com fight
 	   setMoveSummon(cid, false)
 	   addEvent(doMovePokeToPos, 5, poke, getThingPos(cid))
-	   doPlayerSendCancel(cid, "You can't ride or fly during a battle.")
 	   return true 
    end 
    
@@ -75,7 +74,7 @@ if item2.uid == cid then
 	  end
 	  
       setMoveSummon(cid, false)
-      addEvent(doMovePokeToPos, 5, poke, topos)
+      addEvent(doMovePokeToPos, 200, poke, topos)
       setPlayerStorageValue(poke, orderTalks["ride"].storage, 1)
       
    elseif string.find(habilidades, "fly") or string.find(habilidades, "levitate") then
@@ -92,7 +91,7 @@ if item2.uid == cid then
 	   end
        
       setMoveSummon(cid, false)
-      addEvent(doMovePokeToPos, 5, poke, topos)
+      addEvent(doMovePokeToPos, 200, poke, topos)
       setPlayerStorageValue(poke, orderTalks["fly"].storage, 1)
    end  
 ----------------- Ditto ----------------- 
@@ -101,12 +100,6 @@ elseif isMonster(item2.uid) and isInArray({"Shiny Ditto", "Ditto"}, getItemAttri
 	   if isPlayer(item2.uid) and isInDuel(item2.uid) then
 	     return doPlayerSendCancel(cid, MSG_NAO_E_POSSIVEL)
 	   end
-	   
-	   local listaproibidos = {"Mew", "Mewtwo", "Smeargle", "Raikou","Moltres","Kecleon","Zapdos"}
-       if isInArray(listaproibidos, getCreatureName(item2.uid)) then
-            doSendMsg(cid, "You can't transform in these pokemon.")
-         return true
-       end
 	   
        if isPlayerSummon(cid, item2.uid) and isInArray({"Shiny Ditto", "Ditto"}, getItemAttribute(getPlayerSlotItem(cid, 8).uid, "poke")) and not isInArray({"Shiny Ditto", "Ditto"}, getItemAttribute(getPlayerSlotItem(cid, 8).uid, "copyName")) then 
        
@@ -174,7 +167,7 @@ elseif not isCreature(item2.uid) then
 	local dist = getDistanceBetween(getThingPos(poke), getThingPos(item2.uid)) 
     
        
-     
+       if not isFight(cid) then  -- Edi√ß√£o pra ficar igual pxg.. nao dar fly ou ride com fight         
           if isInArray(buracos, item2.itemid) then   ----------------------- DIG
           
              if not string.find(habilidades, "dig") then
@@ -249,6 +242,7 @@ elseif not isCreature(item2.uid) then
                 
              return true
           end
+          end
           if string.find(habilidades, "blink") then
                   if os.time() < getPlayerStorageValue(poke, storages.blink) and not isGod(cid) then
                      doPlayerSay(cid, getCreatureNick(poke)..orderTalks["move"].talks[math.random(#orderTalks["move"].talks)])
@@ -257,10 +251,10 @@ elseif not isCreature(item2.uid) then
 				     doSendMsg(cid, "VocÍ n„o pode usar blink em protection zone quando est· em duelo.")
 					 return true
                   end
-                       setPlayerStorageValue(poke, storages.blink, os.time()+15)
-                       doSendMagicEffect(getThingPos(poke), 211)  
+                       setPlayerStorageValue(poke, storages.blink, os.time()+7)
+                       doSendMagicEffect(getThingPos(poke), 134)  
                        doTeleportThing(poke, getThingPos(item2.uid), false)
-                       doSendMagicEffect(getThingPos(poke), 211)
+                       doSendMagicEffect(getThingPos(poke), 134)
                        doPlayerSay(cid, getCreatureNick(poke)..orderTalks["blink"].talks[math.random(#orderTalks["blink"].talks)])
           
               return true

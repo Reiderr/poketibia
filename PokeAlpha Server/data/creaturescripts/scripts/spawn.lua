@@ -49,7 +49,7 @@ function doShiny(cid)
 		   if isNpcSummon(cid) then return true end
 		    local chance = 0
 			if isInArray(shinysName, doCorrectString(getCreatureName(cid))) then  --alterado v1.9 \/
-			   chance = 10    --1% chance  
+			   chance = 40    --1% chance  
 			end    
 			local sid = cid
 			if math.random(1, 500) <= chance then  

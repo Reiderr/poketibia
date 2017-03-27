@@ -11,13 +11,21 @@ if newLevel >= 11 and newLevel <= 200 then doPlayerSetLossPercent(cid, PLAYERLOS
 
 
 doRegainSpeed(cid)
-local p = getThingPosWithDebug(cid)
-doSendMagicEffect({x=p.x+1, y=p.y, z=p.z}, 382)
+doSendMagicEffect(getThingPos(cid), configuracao.efeito[math.random(#configuracao.efeito)])
 
 local color = 0
 
+if configuracao.texto then
+    if configuracao.cortexto ~= 0 then
+    color = configuracao.cortexto
+    else
+    color = math.random(1, 254)
+    end
+doSendAnimatedText(getThingPos(cid), configuracao.texto, color)
+end
 local s = getCreatureSummons(cid)
 local item = getPlayerSlotItem(cid, 8)
-  -- doCreatureAddHealth(cid, getCreatureMaxHealth(cid))                                                            
+  -- doCreatureAddHealth(cid, getCreatureMaxHealth(cid))
+   doSendMagicEffect(getThingPos(cid), 132)                                                             
 return true
 end

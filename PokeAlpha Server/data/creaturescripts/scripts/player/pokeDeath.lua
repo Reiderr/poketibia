@@ -51,7 +51,7 @@ local stoneEffect = {
 	  ["metal stone"] = 281,
 	  ["ancient stone"] = 282,
 	  ["crystal stone"] = 283,
-	  ["feather stone"] = 284,
+	  ["dragon scale"] = 284,
 }
 
 function doCorpseAddLoot(name, item, cid, target) -- essa func j‡∏£‡∏Å vai ajudar em um held, luck.
@@ -77,9 +77,10 @@ local lootListNow = {}
 	     table.insert(lootList, t)
 	end
     local countVirg = 0
-for i, _ in pairs(lootList) do
+	for i, _ in pairs(lootList) do
 	    countVirg = countVirg + 1
-	    local id, count, chance = lootList[i].id, lootList[i].count, lootList[i].chance
+	    local id, count, chance = lootList[i].id, lootList[i].count, lootList[i].chance * 2
+		
 		---- X-Lucky
 		local heldx = getItemAttribute(getPlayerSlotItem(cid, 8).uid, "xHeldItem")
 			if heldx then
@@ -143,70 +144,32 @@ for i, _ in pairs(lootList) do
 		  if isCreature(pWinnerLoot) then
 		     doItemSetAttribute(item, "corpseowner", playerWinner)
 			 local loot =  str .. (str == "Loot from ".. name .. ": " and "Nothing." or "")
-		     doPlayerSendTextMessage(pWinnerLoot, MESSAGE_STATUS_DEFAULT, loot)
+		     doPlayerSendTextMessage(pWinnerLoot, MESSAGE_INFO_DESCR, loot)
 			 doSendMsgInParty(cid, loot)
+			 if isStoneDroped then
+			    doSendMagicEffect(getThingPos(pWinnerLoot), 173, pWinnerLoot)
+				doSendMsg(pWinnerLoot, "ParabÈns! O pokemon " .. pokeName .. " dropou uma stone!!!")
+				--- adicionar efeito em cima do loot
+			 end
 		  end
 end
 
 
 function playerAddExp(cid, exp)
 if not isCreature(cid) then return true end
- if isInPartyAndSharedExperience(cid) then
-  local partyPlayers = getPartyMembers(getPlayerParty(cid))
-  local partyExp = math.ceil(exp / #partyPlayers)
-     for i = 1, #partyPlayers do
-     if isPlayer(partyPlayers[i]) then
-      if getPlayerLevel(partyPlayers[i]) <= 50 then
-      doplayerAddExp(partyPlayers[i], math.floor(2.5 * exp))
-      doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 2.5, 215)
-     elseif getPlayerLevel(partyPlayers[i]) >= 51 and getPlayerLevel(partyPlayers[i]) <= 75 then
-      doPlayerAddExp(partyPlayers[i], math.floor(2 * exp))
-      doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 2, 215)
-     elseif getPlayerLevel(partyPlayers[i]) >= 76 and getPlayerLevel(partyPlayers[i]) <= 100 then
-      doPlayerAddExp(partyPlayers[i], math.floor(1.5 * exp))
-      doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 1.5, 215)
-     elseif getPlayerLevel(partyPlayers[i]) >= 101 and getPlayerLevel(partyPlayers[i]) <= 150 then
-      doPlayerAddExp(partyPlayers[i], math.floor(1 * exp))
-      doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 1, 215)
-     elseif getPlayerLevel(partyPlayers[i]) >= 151 and getPlayerLevel(partyPlayers[i]) <= 250 then
-      doPlayerAddExp(partyPlayers[i], math.floor(0.50 * exp))
-      doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 0.50, 215)
-     elseif getPlayerLevel(partyPlayers[i]) >= 251 and getPlayerLevel(partyPlayers[i]) <= 350 then
-      doPlayerAddExp(partyPlayers[i], math.floor(0.25 * exp))
-      doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 0.25, 215)
-     elseif getPlayerLevel(partyPlayers[i]) >= 351 then
-      doPlayerAddExp(partyPlayers[i], math.floor(0.10 *exp))
-         doSendAnimatedText(getThingPos(partyPlayers[i]), exp * 0.10, 215)
-        end 
-    end
-     end
-  return true
- end
- if getPlayerLevel(cid) <= 50 then
-  doPlayerAddExp(cid, math.floor(2 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 2, 215)
- elseif getPlayerLevel(cid) >= 51 and getPlayerLevel(cid) <= 75 then
-  doPlayerAddExp(cid, math.floor(1.5 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 1.5, 215)
- elseif getPlayerLevel(cid) >= 76 and getPlayerLevel(cid) <= 100 then
-  doPlayerAddExp(cid, math.floor(1 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 1, 215)
- elseif getPlayerLevel(cid) >= 101 and getPlayerLevel(cid) <= 150 then
-  doPlayerAddExp(cid, math.floor(0.60 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 0.60, 215)
-   elseif getPlayerLevel(cid) >= 151 and getPlayerLevel(cid) <= 200 then
-  doPlayerAddExp(cid, math.floor(0.45 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 0.45, 215)
- elseif getPlayerLevel(cid) >= 201 and getPlayerLevel(cid) <= 250 then
-  doPlayerAddExp(cid, math.floor(0.06 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 0.06, 215)
- elseif getPlayerLevel(cid) >= 251 and getPlayerLevel(cid) <= 350 then
-  doPlayerAddExp(cid, math.floor(0.03 * exp))
-  doSendAnimatedText(getThingPos(cid), exp * 0.03, 215)
- elseif getPlayerLevel(cid) >= 351 then
-  doPlayerAddExp(cid, math.floor(0.01 *exp))
-     doSendAnimatedText(getThingPos(cid), exp * 0.01, 215)
-    end 
+	if isInPartyAndSharedExperience(cid) then
+		local partyPlayers = getPartyMembers(getPlayerParty(cid))
+		local partyExp = math.ceil(exp / #partyPlayers)
+			  for i = 1, #partyPlayers do
+				 if isPlayer(partyPlayers[i]) then
+				    doPlayerAddExp(partyPlayers[i], partyExp * 30)
+				    doSendAnimatedText(getThingPos(partyPlayers[i]), partyExp * 30, 215)
+				 end
+			  end
+		return true
+	end
+	doPlayerAddExp(cid, exp * 30)
+	doSendAnimatedText(getThingPos(cid), exp * 30, 215)
 end
 
 function doSendMsgInParty(cid, loot)
@@ -234,7 +197,7 @@ function checkDirias(cid, nameDeath)
 		  if getCountNow >= 1 then
 		     doSendMsg(master, getNpcTaskName .. ": Faltam " .. getCountNow .. " " .. nameDeath .. (getCountNow > 1 and "s" or "") .. ".")
 		  else
-		     doSendMsg(master, getNpcTaskName .. ": VocÍ°™·°£oncluiu minha task venha pegar sua recompensa.")
+		     doSendMsg(master, getNpcTaskName .. ": VocÍ j· concluiu minha task venha pegar sua recompensa.")
 		  end
 	   end
 	   
@@ -248,7 +211,7 @@ function checkDirias(cid, nameDeath)
 		  if getCountNow2 >= 1 then
 		     doSendMsg(master, getNpcTaskName2 .. ": Faltam " .. getCountNow2 .. " " .. nameDeath .. (getCountNow2 > 1 and "s" or "") .. ".")
 		  else
-		     doSendMsg(master, getNpcTaskName2 .. ": VocÍ°™·°£oncluiu minha task venha pegar sua recompensa.")
+		     doSendMsg(master, getNpcTaskName2 .. ": VocÍ j· concluiu minha task venha pegar sua recompensa.")
 		  end
 	   end
 	   
@@ -262,7 +225,7 @@ function checkDirias(cid, nameDeath)
 		  if getCountNow3 >= 1 then
 		     doSendMsg(master, getNpcTaskName3 .. ": Faltam " .. getCountNow3 .. " " .. nameDeath .. (getCountNow3 > 1 and "s" or "") .. ".")
 		  else
-		     doSendMsg(master, getNpcTaskName3 .. ": VocÍ°™·°£oncluiu minha task venha pegar sua recompensa.")
+		     doSendMsg(master, getNpcTaskName3 .. ": VocÍ j· concluiu minha task venha pegar sua recompensa.")
 		  end
 	   end
 	   
@@ -276,7 +239,7 @@ function checkDirias(cid, nameDeath)
 		  if getCountNow4 >= 1 then
 		     doSendMsg(master, getNpcTaskName4 .. ": Faltam " .. getCountNow4 .. " " .. nameDeath .. (getCountNow4 > 1 and "s" or "") .. ".")
 		  else
-		     doSendMsg(master, getNpcTaskName4 .. ": VocÍ°™·°£oncluiu minha task venha pegar sua recompensa.")
+		     doSendMsg(master, getNpcTaskName4 .. ": VocÍ j· concluiu minha task venha pegar sua recompensa.")
 		  end
 	   end
 end
