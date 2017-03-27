@@ -2,14 +2,26 @@ SERVIDOR ONLINE:
 
 http://35.185.124.255/pxg/index.php -- Pagina para criação de contas
 
-ip do banco de dados : 35.185.124.255
+--ip do banco de dados : 35.185.124.255
 senha : 5vFhGWVf
 
-ip do servidor : 104.197.2.112
+--ip do servidor : 104.197.2.112
 
-para atualizar o seu repositório digitar no git-shell : git pull
+--para atualizar o seu repositório digitar no git-shell : git pull
 
-para salvar alterações do servidor no github(preencher o pop-up que aparecer) : git commit -a 
+--para salvar alterações do servidor no github(preencher o pop-up que aparecer) : git commit -a 
 					     				      : git push
+
+-- para trabalhar com o servidor rodando em seu computador, altere o arquivo de inicio no cliente
+
+o caminho é, DxP Cliente-V3-Descompilado/modules/cliente_entergame/entergame.lua
+
+basta alterar a linha 12 (serverIP, o que estiver dentro das aspas) para 127.0.0.1, para logar no servidor online
+
+troque o que estiver dentro das aspas para 104.197.2.112
+
+-- o servidor está dando um erro que não me deixa atualizar automaticamente, então quando fizerem alguma mudança
+de mapa me avise, ai eu coloco online
+
 
 
