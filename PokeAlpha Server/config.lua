@@ -111,11 +111,11 @@ loginOnlyWithLoginServer = false
 premiumPlayerSkipWaitList = true
 
 sqlType = "mysql"
-sqlHost = "mysql.hostinger.com.br"
+sqlHost = "35.185.124.255"
 sqlPort = 3306
-sqlUser = "u662902705_root"
-sqlPass = ""
-sqlDatabase = "u662902705_dxp"
+sqlUser = "marcos"
+sqlPass = "t15n0513"
+sqlDatabase = "dxp"
 sqlFile = "DarkXPoke.s3db"
 sqlKeepAlive = 0
 mysqlReadTimeout = 10
