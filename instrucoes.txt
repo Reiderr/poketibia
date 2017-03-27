@@ -1,0 +1,15 @@
+SERVIDOR ONLINE:
+
+http://35.185.124.255/pxg/index.php -- Pagina para criação de contas
+
+ip do banco de dados : 35.185.124.255
+senha : 5vFhGWVf
+
+ip do servidor : 104.197.2.112
+
+para atualizar o seu repositório digitar no git-shell : git pull
+
+para salvar alterações do servidor no github(preencher o pop-up que aparecer) : git commit -a 
+					     				      : git push
+
+
