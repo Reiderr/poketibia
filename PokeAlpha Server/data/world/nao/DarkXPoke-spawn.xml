@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:400a17e4627a532704b22c8738539d206924bc4342e2c565b633e0d454940273
-size 800
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="1019" centery="1015" centerz="7" radius="5">
+		<npc name="Nurse Chansey" x="0" y="1" z="7" spawntime="60" />
+		<npc name="Nurse" x="1" y="1" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1013" centery="1020" centerz="7" radius="5">
+		<npc name="-MiniTask - Rosa" x="-4" y="-5" z="7" spawntime="15" />
+		<npc name="-MiniTask - Allan" x="0" y="-5" z="7" spawntime="15" />
+		<npc name="-MiniTask- Katarina" x="-5" y="-3" z="7" spawntime="15" />
+		<npc name="-MiniTask - Ton" x="-2" y="-1" z="7" spawntime="15" />
+		<npc name="-MiniQuest- Tonny" x="1" y="3" z="7" spawntime="15" />
+	</spawn>
+	<spawn centerx="1018" centery="1022" centerz="7" radius="5">
+		<monster name="Teste" x="1" y="1" z="7" spawntime="15" />
+	</spawn>
+</spawns>
