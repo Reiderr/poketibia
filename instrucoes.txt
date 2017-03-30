@@ -20,8 +20,14 @@ basta alterar a linha 12 (serverIP, o que estiver dentro das aspas) para 127.0.0
 
 troque o que estiver dentro das aspas para 104.197.2.112
 
+-- alterar passividade do pokemon (data/lib/107-main tables.lua linha 387-passivepokemons)
+
 -- o servidor está dando um erro que não me deixa atualizar automaticamente, então quando fizerem alguma mudança
 de mapa me avise, ai eu coloco online
 
+-- alterado itens iniciais dos players (arquivo de login e site)
+
+-- novo cliente (resolve problema dos NPCS) 
+	http://download1495.mediafire.com/6qspycd8v84g/i0ety29vyv971rz/DxP+Clientes.7z
 
 

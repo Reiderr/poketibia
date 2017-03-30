@@ -3,13 +3,13 @@ gameVersion = "2.5"
 playerSpeed = 250
 farWayPos = {x = 102, y = 66, z = 4} -- usada pra sistema de order, para o poke entrar de baixo do player
 tempoPraVoltarAoNormal = 8 -- Voltar a rock, bush e outros do order.
-base_Fome_e_Felicidade = 60 -- o Maximo é 150. Quando for capturado ou criado pelo god. 60 = normal
+base_Fome_e_Felicidade = 60 -- o Maximo ï¿½ 150. Quando for capturado ou criado pelo god. 60 = normal
 
 ---Efeitos
 EFFECT_DIG = 88
 EFFECT_CUT = 93
 --- Msgs
-MSG_NAO_E_POSSIVEL = "Desculpe, mas isso não é possível."
+MSG_NAO_E_POSSIVEL = "Desculpe, mas isso nï¿½o ï¿½ possï¿½vel."
 
 pokesGhosts = {"Gengar", "Haunter", "Gastly"}
 
@@ -155,18 +155,18 @@ heldVitality = {
 
 ---------------- configs gerais
 orderTalks = {
-	["ride"] = {talks = {", deixe-me montá-lo.", ", vamos correr!"}, storage = 9800},
-	["fly"] = {talks = {", deixe-me montá-lo.", ", vamos voar!"}, storage = 9801},
-	["levitate"] = {talks = {", deixe-me montá-lo.", ", levitar!"}, storage = 9801},
-	["surf"] = {talks = {", deixe-me montá-lo.", ", vamos surfar!"}, storage = 63215},
+	["ride"] = {talks = {", deixe-me montï¿½-lo.", ", vamos correr!"}, storage = 9800},
+	["fly"] = {talks = {", deixe-me montï¿½-lo.", ", vamos voar!"}, storage = 9801},
+	["levitate"] = {talks = {", deixe-me montï¿½-lo.", ", levitar!"}, storage = 9801},
+	["surf"] = {talks = {", deixe-me montï¿½-lo.", ", vamos surfar!"}, storage = 63215},
 	["dig"] = {talks = {", cave este buraco.", ", use o cavar!"}, storage = 9803},
-	["cut"] = {talks = {", corte esta árvore.", ", use o cortar!"}, storage = 9804},
+	["cut"] = {talks = {", corte esta ï¿½rvore.", ", use o cortar!"}, storage = 9804},
 	["rock"] = {talks = {", quebre esta rocha.", ", use o quebra rocha!"}, storage = 9805},
-	["headbutt"] = {talks = {", balance aquela árvore.", ", bata naquela árvore."}, storage = 9806},
+	["headbutt"] = {talks = {", balance aquela ï¿½rvore.", ", bata naquela ï¿½rvore."}, storage = 9806},
 	["move"] = {talks = {", mova-se!"}, storage = 0},
 	["blink"] = {talks = {", teletransporte.", ", use o teletransporte." }, storage = 0},
-	["gopoke"] = {talks = {", eu preciso de sua ajuda!", ", é hora da batalha!.", ", eu escolho você!" }, storage = 0},
-	["backpoke"] = {talks = {", obrigado.", ", bom trabalho.", ", já chega. Volte!" }, storage = 0},
+	["gopoke"] = {talks = {", eu preciso de sua ajuda!", ", ï¿½ hora da batalha!.", ", eu escolho vocï¿½!" }, storage = 0},
+	["backpoke"] = {talks = {", obrigado.", ", bom trabalho.", ", jï¿½ chega. Volte!" }, storage = 0},
 	["downability"] = {talks = {", deixe-me descer.", ", obrigado." }, storage = 0},
 }
 
@@ -228,14 +228,14 @@ opcodes = {
 }
 
 local NpcDescriptions = {
-["Brock"] = {article = "Ele é", description = "líder do ginásio de Pewter"},
-["Misty"] = {article = "Ela é", description = "líder do ginásio de Cerulean"},
-["Surge"] = {article = "Ele é", description = "líder do ginásio de Vermilion"},
-["Erika"] = {article = "Ela é", description = "líder do ginásio de Celadon"},
-["Sabrina"] = {article = "Ela é", description = "líder do ginásio de Saffron"},
-["Koga"] = {article = "Ele é", description = "líder do ginásio de Fuchsia"},
-["Blaine"] = {article = "Ele é", description = "líder do ginásio de Cinnabar"},
-["Giovanni"] = {article = "Ele é", description = "líder do ginásio de Viridian"},
+["Brock"] = {article = "Ele ï¿½", description = "lï¿½der do ginï¿½sio de Pewter"},
+["Misty"] = {article = "Ela ï¿½", description = "lï¿½der do ginï¿½sio de Cerulean"},
+["Surge"] = {article = "Ele ï¿½", description = "lï¿½der do ginï¿½sio de Vermilion"},
+["Erika"] = {article = "Ela ï¿½", description = "lï¿½der do ginï¿½sio de Celadon"},
+["Sabrina"] = {article = "Ela ï¿½", description = "lï¿½der do ginï¿½sio de Saffron"},
+["Koga"] = {article = "Ele ï¿½", description = "lï¿½der do ginï¿½sio de Fuchsia"},
+["Blaine"] = {article = "Ele ï¿½", description = "lï¿½der do ginï¿½sio de Cinnabar"},
+["Giovanni"] = {article = "Ele ï¿½", description = "lï¿½der do ginï¿½sio de Viridian"},
 }
 
 diarias = {
@@ -245,7 +245,7 @@ diarias = {
 	Expert = {"Misdreavus", "Wobbuffet", "Alakazam", "Steelix", "Tyranitar", "Electabuzz", "Magmar", "Lapras", "Scyther", "Scizor", "Tentacruel", "Gyarados", "Kabutops", "Omastar", "Ampharos", "Kangaskhan", "Jynx", "Skarmory", "Mantine", "Kingdra"},
 	}
 
-storages = {  -- Todas as storages usadas em quaisquer scripts terão q ser armazenadas aqui
+storages = {  -- Todas as storages usadas em quaisquer scripts terï¿½o q ser armazenadas aqui
         iconSys = 20000,
         pokedexSys = 8052,
 		playerClan = 8053,
@@ -384,7 +384,9 @@ silenceStatus = {"sleep", "fear", "involved", "silence"}
 buffStatus = {"rage", "harden", "strafe", "speedUp"}
 allStatus = {"sleep", "stun", "string", "blind", "confusion", "poison", "burn", "leechSeed", "speedDown", "fear", "involved", "silence", "rage", "harden", "strafe", "speedUp"}
 
-passivepokemons = {"Shiny Tangela", "Eevee", "Caterpie", "Metapod", "Butterfree", 'Pidgey', 'Clefairy', 'Jigglypuff', 'Oddish', 'Gloom', 'Paras', 'Psyduck', 'Bellsprout', 'Weepinbell', 'Slowpoke', 'Slowbro', "Farfetch'd", 'Doduo', 'Dodrio', 'Seel', 'Shellder', 'Kangaskhan', 'Chansey', 'Tangela', 'Mr. Mime', 'Tauros', 'Ditto', 'Lapras', 'Porygon', 'Omanyte'}
+passivepokemons = {"Shiny Tangela", "Eevee", "Caterpie", "Metapod", "Butterfree", 'Pidgey', 'Clefairy', 'Jigglypuff', 'Oddish', 'Gloom', 'Paras', 'Psyduck',
+	'Bellsprout', 'Weepinbell', 'Slowpoke', 'Slowbro', "Farfetch'd", 'Doduo', 'Dodrio', 'Seel', 'Shellder', 'Kangaskhan', 'Chansey', 'Tangela', 'Mr. Mime', 'Tauros',
+	'Ditto', 'Lapras', 'Porygon', 'Omanyte', 'Krabby'}
 
 
 ----------------------------------------- Headbutt
@@ -1305,7 +1307,7 @@ movesinfo = {
 ["Pay Day"] = {target = true, range = 7, power = 40, type = "normal"},
 ["Torment"] = {target = false, power = 0, type = "dark"},
 ["Invisible"] = {target = false, power = 0, type = "ghost"},
---------------------------- • PASSIVES • ---------------------------
+--------------------------- ï¿½ PASSIVES ï¿½ ---------------------------
 ["Fury"] = {target = false, power = 0, type = "dragon"},
 ["Electric Charge"] = {target = false, power = 0, type = "electric"},
 ["Melody"] = {target = false, power = 0, type = "normal"},

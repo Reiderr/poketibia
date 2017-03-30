@@ -19,23 +19,26 @@ local megasToPlayer = {
 }
 function BetaItem(cid)
 	if getPlayerStorageValue(cid, storages.betaStorage) == -1 then
-		addPokeToPlayer(cid, "Shiny Ditto", 0, nil, "poke", true)
+		--addPokeToPlayer(cid, "Shiny Ditto", 0, nil, "poke", true)
 		setPlayerStorageValue(cid, storages.betaStorage, 1)
-		doSendMsg(cid, "Você ganhou um Shiny Ditto, uma TV Cam e uma Mega Stone para testalos a vontade.")
-		
+
+		doSendMsg(cid, "Vocï¿½ ganhou um Shiny Ditto, uma TV Cam para testalos a vontade.")
+
+	--[[
 		item = doCreateItemEx(12330)
 		doItemSetAttribute(item, "unique", getCreatureName(cid))
 		doPlayerAddItemEx(cid, item)
-		
+
 		local mega = megasStones[math.random(1, #megasStones)]
-		
 		for a, b in pairs(megasToPlayer) do
-			if mega == b.id then 
+			if mega == b.id then
 				addPokeToPlayer(cid, b.pokeName, 0, nil, "shinyyume", true, a)
 				break
 			end
-		end	
+		end
+		]]
 	end
+
 end
 
 function AutoLootinit(cid)
